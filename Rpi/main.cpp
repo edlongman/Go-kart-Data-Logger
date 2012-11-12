@@ -11,7 +11,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <GPIO/wiringPi.h>
+#include "GPIO/wiringPi.h"
 using namespace std;
 
 int main(int argc, const char * argv[])
