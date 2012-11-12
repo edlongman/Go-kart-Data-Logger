@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6492959016519282002F1412 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 6492957B16519282002F1412 /* Makefile */; };
+		6492959116519282002F1412 /* gertboard.c in Sources */ = {isa = PBXBuildFile; fileRef = 6492957D16519282002F1412 /* gertboard.c */; };
+		6492959216519282002F1412 /* lcd.c in Sources */ = {isa = PBXBuildFile; fileRef = 6492957F16519282002F1412 /* lcd.c */; };
+		6492959316519282002F1412 /* piHiPri.c in Sources */ = {isa = PBXBuildFile; fileRef = 6492958116519282002F1412 /* piHiPri.c */; };
+		6492959416519282002F1412 /* piNes.c in Sources */ = {isa = PBXBuildFile; fileRef = 6492958216519282002F1412 /* piNes.c */; };
+		6492959516519282002F1412 /* piThread.c in Sources */ = {isa = PBXBuildFile; fileRef = 6492958416519282002F1412 /* piThread.c */; };
+		6492959616519282002F1412 /* softPwm.c in Sources */ = {isa = PBXBuildFile; fileRef = 6492958516519282002F1412 /* softPwm.c */; };
+		6492959716519282002F1412 /* wiringPi.c in Sources */ = {isa = PBXBuildFile; fileRef = 6492958716519282002F1412 /* wiringPi.c */; };
+		6492959816519282002F1412 /* wiringPiFace.c in Sources */ = {isa = PBXBuildFile; fileRef = 6492958916519282002F1412 /* wiringPiFace.c */; };
+		6492959916519282002F1412 /* wiringPiSPI.c in Sources */ = {isa = PBXBuildFile; fileRef = 6492958A16519282002F1412 /* wiringPiSPI.c */; };
+		6492959A16519282002F1412 /* wiringSerial.c in Sources */ = {isa = PBXBuildFile; fileRef = 6492958C16519282002F1412 /* wiringSerial.c */; };
+		6492959B16519282002F1412 /* wiringShift.c in Sources */ = {isa = PBXBuildFile; fileRef = 6492958E16519282002F1412 /* wiringShift.c */; };
 		64EF792B16484EDC004CA1F3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64EF792A16484EDC004CA1F3 /* main.cpp */; };
 		64EF792D16484EDC004CA1F3 /* Rpi.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 64EF792C16484EDC004CA1F3 /* Rpi.1 */; };
 /* End PBXBuildFile section */
@@ -25,9 +37,35 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6492957A16519282002F1412 /* COPYING.LESSER */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = COPYING.LESSER; sourceTree = "<group>"; };
+		6492957B16519282002F1412 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		6492957C16519282002F1412 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		6492957D16519282002F1412 /* gertboard.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gertboard.c; sourceTree = "<group>"; };
+		6492957E16519282002F1412 /* gertboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gertboard.h; sourceTree = "<group>"; };
+		6492957F16519282002F1412 /* lcd.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lcd.c; sourceTree = "<group>"; };
+		6492958016519282002F1412 /* lcd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lcd.h; sourceTree = "<group>"; };
+		6492958116519282002F1412 /* piHiPri.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = piHiPri.c; sourceTree = "<group>"; };
+		6492958216519282002F1412 /* piNes.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = piNes.c; sourceTree = "<group>"; };
+		6492958316519282002F1412 /* piNes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = piNes.h; sourceTree = "<group>"; };
+		6492958416519282002F1412 /* piThread.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = piThread.c; sourceTree = "<group>"; };
+		6492958516519282002F1412 /* softPwm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = softPwm.c; sourceTree = "<group>"; };
+		6492958616519282002F1412 /* softPwm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = softPwm.h; sourceTree = "<group>"; };
+		6492958716519282002F1412 /* wiringPi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = wiringPi.c; sourceTree = "<group>"; };
+		6492958816519282002F1412 /* wiringPi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wiringPi.h; sourceTree = "<group>"; };
+		6492958916519282002F1412 /* wiringPiFace.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = wiringPiFace.c; sourceTree = "<group>"; };
+		6492958A16519282002F1412 /* wiringPiSPI.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = wiringPiSPI.c; sourceTree = "<group>"; };
+		6492958B16519282002F1412 /* wiringPiSPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wiringPiSPI.h; sourceTree = "<group>"; };
+		6492958C16519282002F1412 /* wiringSerial.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = wiringSerial.c; sourceTree = "<group>"; };
+		6492958D16519282002F1412 /* wiringSerial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wiringSerial.h; sourceTree = "<group>"; };
+		6492958E16519282002F1412 /* wiringShift.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = wiringShift.c; sourceTree = "<group>"; };
+		6492958F16519282002F1412 /* wiringShift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wiringShift.h; sourceTree = "<group>"; };
 		64EF792616484EDC004CA1F3 /* Rpi */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Rpi; sourceTree = BUILT_PRODUCTS_DIR; };
 		64EF792A16484EDC004CA1F3 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		64EF792C16484EDC004CA1F3 /* Rpi.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Rpi.1; sourceTree = "<group>"; };
+		64EF793316484F3C004CA1F3 /* file.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = file.h; sourceTree = "<group>"; };
+		64EF79341648560F004CA1F3 /* util.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = util.h; path = ../util.h; sourceTree = "<group>"; };
+		64EF793516485672004CA1F3 /* log.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = log.h; sourceTree = "<group>"; };
+		64EF7936164860FB004CA1F3 /* gpio.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gpio.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +79,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6492957916519282002F1412 /* GPIO */ = {
+			isa = PBXGroup;
+			children = (
+				6492957A16519282002F1412 /* COPYING.LESSER */,
+				6492957B16519282002F1412 /* Makefile */,
+				6492957C16519282002F1412 /* README */,
+				6492957D16519282002F1412 /* gertboard.c */,
+				6492957E16519282002F1412 /* gertboard.h */,
+				6492957F16519282002F1412 /* lcd.c */,
+				6492958016519282002F1412 /* lcd.h */,
+				6492958116519282002F1412 /* piHiPri.c */,
+				6492958216519282002F1412 /* piNes.c */,
+				6492958316519282002F1412 /* piNes.h */,
+				6492958416519282002F1412 /* piThread.c */,
+				6492958516519282002F1412 /* softPwm.c */,
+				6492958616519282002F1412 /* softPwm.h */,
+				6492958716519282002F1412 /* wiringPi.c */,
+				6492958816519282002F1412 /* wiringPi.h */,
+				6492958916519282002F1412 /* wiringPiFace.c */,
+				6492958A16519282002F1412 /* wiringPiSPI.c */,
+				6492958B16519282002F1412 /* wiringPiSPI.h */,
+				6492958C16519282002F1412 /* wiringSerial.c */,
+				6492958D16519282002F1412 /* wiringSerial.h */,
+				6492958E16519282002F1412 /* wiringShift.c */,
+				6492958F16519282002F1412 /* wiringShift.h */,
+			);
+			path = GPIO;
+			sourceTree = "<group>";
+		};
 		64EF791B16484EDC004CA1F3 = {
 			isa = PBXGroup;
 			children = (
@@ -60,6 +127,11 @@
 		64EF792916484EDC004CA1F3 /* Rpi */ = {
 			isa = PBXGroup;
 			children = (
+				6492957916519282002F1412 /* GPIO */,
+				64EF7936164860FB004CA1F3 /* gpio.h */,
+				64EF793516485672004CA1F3 /* log.h */,
+				64EF79341648560F004CA1F3 /* util.h */,
+				64EF793316484F3C004CA1F3 /* file.h */,
 				64EF792A16484EDC004CA1F3 /* main.cpp */,
 				64EF792C16484EDC004CA1F3 /* Rpi.1 */,
 			);
@@ -118,6 +190,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				64EF792B16484EDC004CA1F3 /* main.cpp in Sources */,
+				6492959016519282002F1412 /* Makefile in Sources */,
+				6492959116519282002F1412 /* gertboard.c in Sources */,
+				6492959216519282002F1412 /* lcd.c in Sources */,
+				6492959316519282002F1412 /* piHiPri.c in Sources */,
+				6492959416519282002F1412 /* piNes.c in Sources */,
+				6492959516519282002F1412 /* piThread.c in Sources */,
+				6492959616519282002F1412 /* softPwm.c in Sources */,
+				6492959716519282002F1412 /* wiringPi.c in Sources */,
+				6492959816519282002F1412 /* wiringPiFace.c in Sources */,
+				6492959916519282002F1412 /* wiringPiSPI.c in Sources */,
+				6492959A16519282002F1412 /* wiringSerial.c in Sources */,
+				6492959B16519282002F1412 /* wiringShift.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,6 +294,7 @@
 				64EF793216484EDC004CA1F3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
