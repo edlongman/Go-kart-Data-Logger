@@ -10,10 +10,24 @@
 //#include "log.h"
 
 #include <iostream>
+#include "GPIO/wiringPi.h"
+using namespace std;
 
 int main(int argc, const char * argv[])
 {
     //testing my RPi GPIO
+    cout << "GPIO Test Program.\n";
     
+    if (wiringPiSetup () == -1){
+        cout << "couldn't setup GPIO";
+        exit (1) ;
+    }
+    pinMode(0,OUTPUT);
+    for(int i=0;i<1000;i++){
+        digitalWrite(0,1);
+        delay(1);
+        digitalWrite(0,0);
+        delay(1);
+    }
 }
 
