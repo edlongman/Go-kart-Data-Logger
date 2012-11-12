@@ -9,6 +9,7 @@
 //#include "file.h"
 //#include "log.h"
 
+#include <iostream.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include "GPIO/wiringPi.h"
