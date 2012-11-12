@@ -9,8 +9,8 @@
 //#include "file.h"
 //#include "log.h"
 
-#include <iostream>
-#include <stdlib.h>
+#include stdio.h
+#include stdlib.h
 #include "GPIO/wiringPi.h"
 using namespace std;
 
