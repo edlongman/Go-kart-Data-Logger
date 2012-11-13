@@ -25,11 +25,14 @@ int main(int argc, const char * argv[])
         exit (1) ;
     }
     pinMode(0,OUTPUT);
-    for(int i=0;i<1000;i++){
+    pinMode(4,OUTPUT);
+    for(int i=0;i<10;i++){
         digitalWrite(0,1);
-        delay(1);
+        digitalWrite(4,0);
+        delay(100);
         digitalWrite(0,0);
-        delay(1);
+        digitalWrite(4,1);
+        delay(100);
     }
 }
 
