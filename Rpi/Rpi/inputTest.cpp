@@ -39,16 +39,16 @@ void long_wait(int v)
 } // long_wait
 
 void clock(int pin, int value){ //this clocks the chip changing the bit specified beforehand
-    digitalWrite(1,0); //turns pin off to write values
+    digitalWrite(14,0); //turns pin off to write values
     long_wait(1);
     digitalWrite(pin, value); //writes the value to the pin
-    digitalWrite(1,1); //turns pin on to clock processor
+    digitalWrite(14,1); //turns pin on to clock processor
 }
 int clock(int pin){ //this clocks the chip reading the pin value beforehand
-    digitalWrite(1,0); //turns pin off to read values
+    digitalWrite(14,0); //turns pin off to read values
     long_wait(1);
     int val=digitalRead(pin); //reads the value from the pin
-    digitalWrite(1,1); //turns pin on to clock chip
+    digitalWrite(14,1); //turns pin on to clock chip
     return val;
 }
 
