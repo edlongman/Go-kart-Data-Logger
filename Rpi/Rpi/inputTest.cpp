@@ -82,7 +82,7 @@ int main(int argc, const char * argv[])
     //done intitialisation
     
     //now do the reading of the values an convert the binary into decimal!!
-    int dec_value; //dec_value must be defined first because it is to be used outside the loop
+    int dec_value=0; //dec_value must be defined first because it is to be used outside the loop
     for(int i=0,bit;i<10;i++,bit=NULL){ //start loop reset bit each loop
         bit = clock(13);
         cout<<"bit "<<i<<":"<<bit<<"\n";
