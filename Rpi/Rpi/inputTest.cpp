@@ -10,7 +10,7 @@
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
-#include "GPIO/wiringPi.h"
+#include "wiringPi.h"
 using namespace std;
 
 void clock(int pin, int value){ //this clocks the chip changing the bit specified beforehand
