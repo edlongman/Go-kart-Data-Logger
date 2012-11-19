@@ -86,7 +86,7 @@ int main(int argc, const char * argv[])
     for(int i=0,bit;i<10;i++,bit=NULL){ //start loop reset bit each loop
         bit = clock(13);
         cout<<"bit "<<i<<":"<<bit<<"\n";
-        dec_value+=pow(2,i)*bit;
+        dec_value+=pow(2,10-i)*bit;
     }
     digitalWrite(10,1); //bring bit up to stop read sequence
     cout<<"decimal value of the resistor"<<dec_value<<"\n";
