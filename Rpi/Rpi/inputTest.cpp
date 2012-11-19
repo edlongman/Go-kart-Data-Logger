@@ -61,12 +61,12 @@ int main(int argc, const char * argv[])
         cout << "couldn't setup GPIO";
         exit (1) ;
     }
-    pinMode(6,OUTPUT); // known as chip select or shutdown in the MCP data sheet
+    pinMode(10,OUTPUT); // known as chip select or shutdown in the MCP data sheet
     digitalWrite(6,1); //to start it must be a falling edgeso set it up as running
-    pinMode(1,OUTPUT); // CLK when this is turned on the chip will clock
-    pinMode(5,OUTPUT); // Din
+    pinMode(14,OUTPUT); // CLK when this is turned on the chip will clock
+    pinMode(12,OUTPUT); // Din
     //setup the pin for reading serial input
-    pinMode(4,INPUT); //Dout the seral output stream
+    pinMode(13,INPUT); //Dout the seral output stream
     
     int sgl=1;  //SGL/DIFF is high
     int odd=0;  //ODD/SIGN low for chanel 0 high for chanel 1
