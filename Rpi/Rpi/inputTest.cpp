@@ -34,7 +34,7 @@ void clock(int pin, int value){ //this clocks the chip changing the bit specifie
 }
 int clock(int pin){ //this clocks the chip reading the pin value beforehand
     digitalWrite(1,0); //turns pin off to read values
-    delay(1); // alows the chip to clock, much too long but I'm lazy
+    short_wait();
     int val=digitalRead(pin); //reads the value from the pin
     digitalWrite(1,1); //turns pin on to clock chip
     return val;
