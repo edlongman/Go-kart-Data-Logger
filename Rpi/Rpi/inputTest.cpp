@@ -62,7 +62,7 @@ int main(int argc, const char * argv[])
         exit (1) ;
     }
     pinMode(10,OUTPUT); // known as chip select or shutdown in the MCP data sheet
-    digitalWrite(6,1); //to start it must be a falling edgeso set it up as running
+    digitalWrite(10,1); //to start it must be a falling edgeso set it up as running
     pinMode(14,OUTPUT); // CLK when this is turned on the chip will clock
     pinMode(12,OUTPUT); // Din
     //setup the pin for reading serial input
@@ -74,6 +74,7 @@ int main(int argc, const char * argv[])
     
     
     //start initialising the chip for reading
+    digitalWrite(10,0); //bring bit down to start read sequence
     clock(5,1);     //start bit
     clock(5,sgl);   //send SGL/DIFF
     clock(5,odd);   //like above
@@ -87,5 +88,6 @@ int main(int argc, const char * argv[])
         cout<<"bit "<<i<<":"<<bit<<"\n";
         dec_value+=pow(2,i)*bit;
     }
+    digitalWrite(10,1); //bring bit up to stop read sequence
     cout<<"decimal value of the resistor"<<dec_value<<"\n";
 }
