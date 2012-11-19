@@ -13,9 +13,22 @@
 #include "wiringPi.h"
 using namespace std;
 
+
+//
+// This is a software loop to wait
+// a short while.
+//
+void short_wait()
+{ int w;
+    for (w=0; w<100; w++)
+    { w++;
+        w--;
+    }
+} // short_wait
+
 void clock(int pin, int value){ //this clocks the chip changing the bit specified beforehand
     digitalWrite(1,0); //turns pin off to write values
-    delay(1); // alows the chip to clock, much too long but I'm lazy
+    short_wait();
     digitalWrite(pin, value); //writes the value to the pin
     digitalWrite(1,1); //turns pin on to clock processor
 }
