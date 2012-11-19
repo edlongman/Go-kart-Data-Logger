@@ -75,16 +75,16 @@ int main(int argc, const char * argv[])
     
     //start initialising the chip for reading
     digitalWrite(10,0); //bring bit down to start read sequence
-    clock(5,1);     //start bit
-    clock(5,sgl);   //send SGL/DIFF
-    clock(5,odd);   //like above
-    clock(5,msbf);  //like above
+    clock(12,1);     //start bit
+    clock(12,sgl);   //send SGL/DIFF
+    clock(12,odd);   //like above
+    clock(12,msbf);  //like above
     //done intitialisation
     
     //now do the reading of the values an convert the binary into decimal!!
     int dec_value; //dec_value must be defined first because it is to be used outside the loop
     for(int i=0,bit;i<10;i++,bit=NULL){ //start loop reset bit each loop
-        bit = clock(4);
+        bit = clock(13);
         cout<<"bit "<<i<<":"<<bit<<"\n";
         dec_value+=pow(2,i)*bit;
     }
