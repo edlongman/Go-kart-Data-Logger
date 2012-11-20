@@ -29,5 +29,6 @@ int main(int argc, const char * argv[])
             i++;
             while (digitalRead(0)==1) {}
         }
+        delay(10);
     }
 }
