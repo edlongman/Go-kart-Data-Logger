@@ -27,5 +27,6 @@ int main(int argc, const char * argv[])
             cout << "pressed.\n";
             while (digitalRead(0)==1) {}
         }
+        delay(100);
     }
 }
