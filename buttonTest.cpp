@@ -22,11 +22,12 @@ int main(int argc, const char * argv[])
         exit (1) ;
     }
     pinMode(0,INPUT);
+    int i=0; //number of times the button has been pressed
     while(true){
         if(digitalRead(0)==1){
-            cout << "pressed.\n";
+            cout << "pressed " << i <<".\n";
+            i++;
             while (digitalRead(0)==1) {}
         }
-        delay(100);
     }
 }
