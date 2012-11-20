@@ -22,7 +22,10 @@ int main(int argc, const char * argv[])
         exit (1) ;
     }
     pinMode(0,INPUT);
-    while(digitalRead(0)==0){
-        cout << "pressed.\n";
+    while(true){
+        if(digitalRead(0)==1){
+            cout << "pressed.\n";
+            while (digitalRead(0)==1) {}
+        }
     }
 }
