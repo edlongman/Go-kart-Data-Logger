@@ -83,7 +83,7 @@ int main(int argc, const char * argv[])
     int dec_value=0; //dec_value must be defined first because it is to be used outside the loop
     
     int null_bit = clock(13); //clock once for the null bit at the beginning
-    for(int i=0,bit;i<1;i++,bit=0){ //start loop reset bit each loop
+    for(int i=0,bit;i<10;i++,bit=NULL){ //start loop reset bit each loop
         bit = clock(13);
         cout<<"bit "<<i<<":"<<bit<<"\n";
         dec_value+=pow(2,10-i)*bit;
