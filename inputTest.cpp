@@ -39,14 +39,12 @@ void long_wait(int v)
 } // long_wait
 
 void clock(int pin, int value){ //this clocks the chip changing the bit specified beforehand
-    digitalWrite(14,0); //turns pin off to write values
-    short_wait();
+    digitalWrite(14,0); //turns pin off to write values-
     digitalWrite(pin, value); //writes the value to the pin
     digitalWrite(14,1); //turns pin on to clock processor
 }
 int clock(int pin){ //this clocks the chip reading the pin value beforehand
-    digitalWrite(14,0); //turns pin off to read values
-    short_wait();
+    digitalWrite(14,0); //turns pin off to read values-
     int val=digitalRead(pin); //reads the value from the pin
     digitalWrite(14,1); //turns pin on to clock chip
     return val;
@@ -80,7 +78,7 @@ int main(int argc, const char * argv[])
     clock(12,odd);   //like above
     clock(12,msbf);  //like above
     //done intitialisation
-    
+    short_wait()
     //now do the reading of the values an convert the binary into decimal!!
     int dec_value=0; //dec_value must be defined first because it is to be used outside the loop
     for(int i=0,bit;i<10;i++,bit=NULL){ //start loop reset bit each loop
