@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <stdio.h>
+#include <stdlib.h>
 #include "util.h"
 #include "atod.h"
 #include "GPIO/wiringPi.h"
