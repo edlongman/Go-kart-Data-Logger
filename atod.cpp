@@ -56,9 +56,7 @@ int atod::read(){ //returns return value
     clock(13); //clock once for the null bit at the beginning
     for(int i=0,bit;i<10;i++,bit=NULL){ //start loop reset bit each loop
         bit = clock(dout_pin);
-        cout<<"bit "<<i<<":"<<bit;
         int new_val=pow(2,9-i)*bit;
-        cout<<":"<<new_val<<"\n";
         dec_value+=new_val;
     }
     digitalWrite(shutdown_pin,1); //bring bit up to stop read sequence
