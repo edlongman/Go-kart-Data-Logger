@@ -11,32 +11,9 @@
 #include <math.h>
 #include <stdlib.h>
 #include "wiringPi.h"
+#include "util.h"
 using namespace std;
 
-
-//
-// This is a software loop to wait
-// a short while.
-//
-void short_wait()
-{ int w;
-    for (w=0; w<100; w++)
-    { w++;
-        w--;
-    }
-} // short_wait
-
-//
-// Simple SW wait loop
-//
-void long_wait(int v)
-{ int w;
-    while (v--)
-        for (w=-800000; w<800000; w++)
-        { w++;
-            w--;
-        }
-} // long_wait
 
 void clock(int pin, int value){ //this clocks the chip changing the bit specified beforehand
     digitalWrite(14,0); //turns pin off to write values-
