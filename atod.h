@@ -17,7 +17,7 @@ class atod {
     dout_pin,
     din_pin;
 public:
-    atod(int clock_pin, int shutdown_pin,int dout_pin, int din_pin);
+    atod(int, int, int, int);
     atod();
     int read();
     
