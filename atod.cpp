@@ -15,7 +15,12 @@
 using namespace std;
 
 //please make sure wiring pi is initialised!
-atod::atod(int, int, int, int){};
+atod::atod(int clock, int shutdown, int dout, int din){
+    clock_pin=clock;
+    shutdown_pin=shutdown;
+    dout_pin=dout;
+    din_pin=din;
+};
 atod::atod(){ // if no pins are passed in then ask for them
     cout << "What number is the clock pin? : ";
     cin>>clock_pin;
