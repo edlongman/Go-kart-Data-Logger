@@ -9,6 +9,7 @@
 #ifndef Rpi_util_h
 #define Rpi_util_h
 
-
+void short_wait();
+void long_wait(int v);
 
 #endif
