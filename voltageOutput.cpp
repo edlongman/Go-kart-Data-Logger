@@ -10,9 +10,18 @@
 #include <stdio.h>
 #include "util.h"
 #include "atod.h"
+#include "GPIO/wiringPi.h"
 using namespace std;
 int main(int argc, const char * argv[])
 {
+    //testing my RPi GPIO
+    cout << "Voltage reading Program.\n";
+    
+    if (wiringPiSetup () == -1){
+        cout << "couldn't setup GPIO";
+        exit (1) ;
+    }
+    
     //input voltage equasion
     //                    value of chip * input voltage
     // analogue voltage = -----------------------------
