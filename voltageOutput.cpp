@@ -31,8 +31,7 @@ int main(int argc, const char * argv[])
     //setup chip
     atod sensor(14,10,13,12); //clock,shutdown,dout,din
     //does a test read of the sensor
-    cout << "value : " << sensor.read();
-    for (int i=0; i<10000; i++){
+    for (int i=0; i<10000 ; i++){
         int sensor_val=sensor.read();
         double voltage=(sensor_val*3.3)/1024;
         printf("Reading : %u     Voltage : %f",sensor.read(),voltage);
