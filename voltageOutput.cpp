@@ -30,12 +30,13 @@ int main(int argc, const char * argv[])
     
     //setup chip
     atod sensor(14,10,13,12); //clock,shutdown,dout,din
-    
+    //does a test read of the sensor
+    cout << "value : " << sensor.read();
     while (true) {
         int sensor_val=sensor.read();
         double voltage=(sensor_val*3.3)/1024;
         printf("Reading : %u     Voltage : %f",sensor.read(),voltage);
         putchar(0x0D); // go to start of the line
-        short_wait();
+        delay(10); //slows the program down!
     }
 }
