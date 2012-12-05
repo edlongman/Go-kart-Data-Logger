@@ -52,4 +52,5 @@ int main(int argc, const char * argv[])
         putchar(0x0D); // go to start of the line
         delay(10); //slows the program down!
     }
+    cout << "\n"; //newline to finish program
 }
