@@ -20,6 +20,9 @@ public:
     atod(int, int, int, int);
     atod();
     int read();
+    int read(int);
+    double voltage();
+    double voltage(int);
     
 private:
     void clock(int pin, int value);//this clocks the chip changing the bit specified beforehand

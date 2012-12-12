@@ -31,7 +31,7 @@ atod::atod(){ // if no pins are passed in then ask for them
     cout << "What number is the D in pin? : ";
     cin>>din_pin;
 }
-int atod::read(){ //returns return value
+int atod::read(){ //returns actual chip value for the number of loops specified
     pinMode(shutdown_pin,OUTPUT); // known as chip select or shutdown in the MCP data sheet
     digitalWrite(10,1); //to start it must be a falling edge so set it up as running
     
@@ -67,7 +67,27 @@ int atod::read(){ //returns return value
     digitalWrite(shutdown_pin,1); //bring bit up to stop read sequence
     return dec_value;
 }
-    
+
+int atod::read(int loops){
+    int cumulative_sensor=0;
+    for (int ii=0;ii<loops;ii++){
+        int sensor_val=read();
+        cumulative_sensor+=sensor_val;
+        delay(1); //slows the program down!
+    }
+    return cumulative_sensor;
+}
+
+double atod::voltage(){
+    return voltage(1);
+}
+
+double atod::voltage(int loops){
+    int sensor_val=read(loops);
+    double voltage=(sensor_val*3.3)/1024;
+    return voltage;
+}
+
 void atod::clock(int pin, int value){ //this clocks the chip changing the bit specified beforehand
     digitalWrite(14,0); //turns pin off to write values-
     digitalWrite(pin, value); //writes the value to the pin
