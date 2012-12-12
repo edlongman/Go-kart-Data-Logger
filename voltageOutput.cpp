@@ -48,7 +48,7 @@ int main(int argc, const char * argv[])
         cumulative_sensor=cumulative_sensor*100;
         cumulative_sensor=floor(cumulative_sensor);
         cumulative_sensor=cumulative_sensor/1000;
-        printf("Reading : %u     Voltage : %f",sensor.read(),cumulative_voltage);
+        printf("Reading : %u     Voltage : %f",cumulative_sensor,cumulative_voltage);
         putchar(0x0D); // go to start of the line
         delay(10); //slows the program down!
     }
