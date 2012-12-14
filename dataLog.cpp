@@ -22,12 +22,13 @@ using namespace std;
 void readval(atod sensor, string filename){
     time_t curr;
     curr=time(NULL);
-    int temp=floor((sensor.voltage(1000)-0.5)*100);
+    double result=sensor.voltage(1000);
+    int temp=floor((result-0.5)*100);
     fstream file;
     file.open(filename.c_str(), fstream::in | fstream::out | fstream::app); //input and output streams, appending
     string new_line;
     file<<curr<<","<<temp<<"\n";
-    cout<<curr<<","<<temp<<"\n";
+    cout<<curr<<","<<temp<<","<<result<<"\n";
     file.close();
 }
 
