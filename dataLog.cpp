@@ -57,7 +57,7 @@ int main(int argc, const char * argv[])
     start_time=time(NULL);
     
     time_t end_time;
-    end_time=start_time+(run_time*60);
+    end_time=start_time+((run_time-1)*60);
     
     //runs for a set number of hours and minutes
     //bool run=true;
