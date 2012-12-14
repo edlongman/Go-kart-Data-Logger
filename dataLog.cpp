@@ -27,6 +27,7 @@ void readval(atod sensor, string filename){
     file.open(filename.c_str(), fstream::in | fstream::out | fstream::app); //input and output streams, appending
     string new_line;
     file<<curr<<","<<temp<<"\n";
+    cout<<curr<<","<<temp<<"\n";
     file.close();
 }
 
@@ -66,5 +67,5 @@ int main(int argc, const char * argv[])
         readval(sensor,filename);
     }
     cout << "\n";
-    cout << "expected to end at: " << end_time << " ; Ended at: "<<time(NULL);
+    cout << "expected to end at: " << end_time << " ; Ended at: "<<time(NULL)<< "\n";
 } 
