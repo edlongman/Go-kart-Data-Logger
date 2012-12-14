@@ -23,7 +23,7 @@ void readval(atod sensor, string filename){
     time_t curr;
     curr=time(NULL);
     double result=sensor.read(1000);
-    double temp=result*330.0-50.0;
+    double temp=result*0.33-50.0;
     fstream file;
     file.open(filename.c_str(), fstream::in | fstream::out | fstream::app); //input and output streams, appending
     string new_line;
