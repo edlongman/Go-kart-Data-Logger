@@ -18,6 +18,18 @@
 #include <vector>
 #include <unistd.h>
 using namespace std;
+
+void readval(atod sensor, string filename){
+    time_t curr;
+    curr=time(NULL);
+    int temp=floor((sensor.voltage(1000)-0.5)*100);
+    fstream file;
+    file.open(filename.c_str(), fstream::in | fstream::out | fstream::app); //input and output streams, appending
+    string new_line;
+    file<<curr<<","<<temp<<"\n";
+    file.close();
+}
+
 int main(int argc, const char * argv[])
 {
     cout << "Data Logging for temperature sensor values\n";
@@ -47,16 +59,10 @@ int main(int argc, const char * argv[])
     
     //runs for a set number of hours and minutes
     //bool run=true;
-    for(int i=0;i<run_time;i++){
-        time_t curr;
-        curr=time(NULL);
-        int temp=floor((sensor.voltage(1000)-0.5)*100);
-        fstream file;
-        file.open(filename.c_str(), fstream::in | fstream::out | fstream::app); //input and output streams, appending
-        string new_line;
-        file<<curr<<","<<temp<<"\n";
-        file.close();
+    readval(sensor,filename);
+    for(int i=1;i<run_time;i++){
         sleep(59);
+        readval(sensor,filename);
     }
     cout << "\n";
     cout << "expected to end at: " << end_time << " ; Ended at: "<<time(NULL);
