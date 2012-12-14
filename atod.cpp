@@ -75,6 +75,7 @@ int atod::read(int loops){
         cumulative_sensor+=sensor_val;
         delay(1); //slows the program down!
     }
+    cumulative_sensor=cumulative_sensor/loops;
     return cumulative_sensor;
 }
 
