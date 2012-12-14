@@ -47,12 +47,13 @@ int main(int argc, const char * argv[])
     //setup chip
     atod sensor(14,10,13,12); //clock,shutdown,dout,din
     
-    time_t start_time;
-    start_time=time(NULL);
     
     int run_time;
     cout << "In minutes how long would you like to run the program for? :";
     cin >> run_time;
+    
+    time_t start_time;
+    start_time=time(NULL);
     
     time_t end_time;
     end_time=start_time+(run_time*60);
