@@ -52,7 +52,7 @@ int main(int argc, const char * argv[])
         curr=time(NULL);
         int temp=floor((sensor.voltage(1000)-0.5)*100);
         fstream file;
-        file.open(filename, ios_base::in | ios_base::out | ios_base::app); //input and output streams, appending
+        file.open(filename.c_str(), fstream::in | fstream::out | fstream::app); //input and output streams, appending
         string new_line;
         file<<curr<<","<<temp<<"\n";
         file.close();
