@@ -22,8 +22,8 @@ using namespace std;
 void readval(atod sensor, string filename){
     time_t curr;
     curr=time(NULL);
-    double result=sensor.voltage(1000);
-    double temp=(result-0.5)*100;
+    double result=sensor.read(1000);
+    double temp=result*330.0-50.0;
     fstream file;
     file.open(filename.c_str(), fstream::in | fstream::out | fstream::app); //input and output streams, appending
     string new_line;
