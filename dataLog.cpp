@@ -24,7 +24,7 @@ void readval(atod sensor, string filename){
     curr=time(NULL);
     double result=sensor.voltage(1000);
     double milliV=result*1000;
-    double temp=(milliV-500)/10;
+    double temp=(milliV)/8-50;
     fstream file;
     file.open(filename.c_str(), fstream::in | fstream::out | fstream::app); //input and output streams, appending
     string new_line;
