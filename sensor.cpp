@@ -13,13 +13,13 @@
 
 using namespace std;
 
-/*sensor::sensor(){
+sensor::sensor(){
 	logFile file(sensorName);
-    serialBus=atod(14,10,13,12,sensorType);
+    serialBus atod(14,10,13,12,sensorType);
     startTime=time(0);
     timeNow=startTime;
     lastSensorTime=timeNow;
-}*/
+}
 bool sensor::actual(double *value){
 	return false;
 }
