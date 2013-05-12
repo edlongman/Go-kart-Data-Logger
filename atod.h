@@ -9,21 +9,25 @@
 #ifndef __RPi__atod__
 #define __RPi__atod__
 
+void short_wait();
+void long_wait(int v);
+
 //please make sure wiring pi is initialised!
 
 class atod {
     int clock_pin,
     shutdown_pin,
     dout_pin,
-    din_pin;
+    din_pin,
+    channel;
 public:
-    atod(int, int, int, int);
+    atod(int, int, int, int, int);
     atod();
     int read();
     int read(int);
     double voltage();
     double voltage(int);
-    
+
 private:
     void clock(int pin, int value);//this clocks the chip changing the bit specified beforehand
     int clock(int pin);//this clocks the chip reading the pin value beforehand
