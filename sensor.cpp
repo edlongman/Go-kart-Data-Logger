@@ -13,9 +13,9 @@
 
 using namespace std;
 
-sensor::sensor(): logFile(sensorName){
-	file logFile(sensorName);
-    atod serialBus(14,10,13,12,sensorType);
+sensor::sensor(): logFile(sensorName): serialBus(14,10,13,12,sensorType){
+	//file logFile(sensorName);
+    //atod serialBus(14,10,13,12,sensorType);
     startTime=time(0);
     timeNow=startTime;
     lastSensorTime=timeNow;
@@ -44,6 +44,7 @@ temperature::temperature(time_t startTime){
 	sensorType=temperaturePin;
 	sensorName="temperature";
     timeNow=startTime;
+    atod serialBus(14,10,13,12,sensorType);
 }
 bool temperature::actual(double *value){
 	double voltage;
