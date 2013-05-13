@@ -34,7 +34,6 @@ protected:
     bool rawRead(double *value);
 private:
 	file logFile;
-	
 };
 
 

@@ -11,6 +11,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <string>
 #define baseLoc "/output/"
 #define ext ".txt"
 

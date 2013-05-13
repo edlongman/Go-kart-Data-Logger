@@ -13,9 +13,9 @@
 
 using namespace std;
 
-sensor::sensor(){
-	logFile file(sensorName);
-    serialBus atod(14,10,13,12,sensorType);
+sensor::sensor(): logFile(sensorName){
+	//file logFile(sensorName);
+    atod serialBus(14,10,13,12,sensorType);
     startTime=time(0);
     timeNow=startTime;
     lastSensorTime=timeNow;
