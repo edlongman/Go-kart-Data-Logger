@@ -45,6 +45,7 @@ atod::atod(int clock, int shutdown, int dout, int din, int chan){
     dout_pin=dout;
     din_pin=din;
     channel=chan;
+    cout << chan << endl;
 };
 atod::atod(){ // if no pins are passed in then ask for them
     cout << "What number is the clock pin? : ";
