@@ -13,7 +13,11 @@ using namespace std;
 
 int main(){
     cout << "Data logging program."<<endl;
-    
+
+    if (wiringPiSetup () == -1){
+        cout << "couldn't setup GPIO";
+        exit (1) ;
+    }
     time_t startTime=time(0);
     //create sensors
     temperature temp1(startTime);
