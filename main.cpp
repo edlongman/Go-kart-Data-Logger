@@ -29,6 +29,6 @@ int main(){
     cout << "Temp is:" <<currTemp<< "\u00b0C" << endl;
     double currLight;
     bool lightResult=light1.actual(&currLight);
-    cout << "Temp is:" <<currLight<< "\u00b0C" << endl;
+    cout << "Light is:" <<currLight<< "Lux" << endl;
     return 0;
 }
