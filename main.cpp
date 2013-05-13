@@ -9,7 +9,7 @@
 #include <iostream>
 #include <time.h>
 #include "sensor.h"
-#include <>wiringPi.h>
+#include <GPIO/wiringPi.h>
 using namespace std;
 
 int main(){
