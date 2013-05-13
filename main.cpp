@@ -17,7 +17,8 @@ int main(){
 
     if (wiringPiSetup () == -1){
         cout << "couldn't setup GPIO";
-        exit (1) ;
+        //exit (1) ;
+        return 0;
     }
     time_t startTime=time(0);
     //create sensors
