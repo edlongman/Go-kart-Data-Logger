@@ -13,7 +13,7 @@
 
 using namespace std;
 
-sensor::sensor(): logFile(sensorName): serialBus(14,10,13,12,sensorType){
+sensor::sensor(): logFile(sensorName), serialBus(14,10,13,12,sensorType){
 	//file logFile(sensorName);
     //atod serialBus(14,10,13,12,sensorType);
     startTime=time(0);
