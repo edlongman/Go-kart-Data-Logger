@@ -39,6 +39,7 @@ private:
 
 class temperature : public sensor {
 public:
+	sensorPins sensorType: temperaturePin;
 	temperature(time_t startTime);
 	//IN DEGREES C
     bool actual(double *value);
@@ -46,6 +47,7 @@ public:
 
 class light : public sensor {
 public:
+	sensorPins sensorType: lightPin;
 	light(time_t startTime);
 	//IN LUX (LUMSNS/sqrFT)
     bool actual(double *value);
