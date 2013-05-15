@@ -14,7 +14,7 @@
 #include "file.h"
 
 //this enum associates the sensor with the port that it is connected to for ease of use!
-enum sensorPins {temperaturePin=13,lightPin=11};
+enum sensorPins {temperaturePin=1,lightPin=0};
 
 //this is the basic layer for reading and logging values
 class sensor {

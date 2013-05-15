@@ -58,6 +58,7 @@ light::light(time_t startTime){
 	sensorType=lightPin;
 	sensorName="light";
     timeNow=startTime;
+    atod serialBus(14,10,13,12,sensorType);
 }
 bool light::actual(double *value){
 	double voltage;
