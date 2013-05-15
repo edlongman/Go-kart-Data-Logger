@@ -30,5 +30,7 @@ int main(){
     double currLight;
     bool lightResult=light1.actual(&currLight);
     cout << "Light is:" <<currLight<< "Lux" << endl;
+    cout << "Temperture pin:" <<temperaturePin<< endl;
+    cout << "light pin:" <<lightPin<< endl;
     return 0;
 }
