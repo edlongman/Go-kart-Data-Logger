@@ -69,7 +69,7 @@ int atod::read(){ //returns actual chip value for the number of loops specified
     pinMode(dout_pin,INPUT); //Dout the seral output stream
 
     int sgl=1;  //SGL/DIFF is high
-    int odd=channel;  //ODD/SIGN low for channel 0 high for channel 1
+    int odd=channel-1;  //ODD/SIGN low for channel 0 high for channel 1
     int msbf=1; //MSBF bit is high
 
 
