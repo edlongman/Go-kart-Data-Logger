@@ -31,7 +31,7 @@ bool sensor::log(clock_t timeNow, double *value){
     bool readSucess=actual(value);
     double logTime = startTime+ timeNow;
     //add the latest value to the total and register it in the loops
-	totalSinceLastLog+=value;
+	totalSinceLastLog+=*value;
 	loopsSinceLastLog++;
     //is the last log time over 2 seconds ago? So log it then.
     if((lastLogTime+2)<logTime){
