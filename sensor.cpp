@@ -49,7 +49,7 @@ temperature::temperature(time_t startTime){
 bool temperature::actual(double *value){
 	double voltage;
 	bool success=rawRead(&voltage);
-	*value=(voltage*10)+50;
+	*value=(voltage-0.5)*100;
 	return success;
 }
 
