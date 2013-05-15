@@ -21,16 +21,16 @@ int main(){
         return 0;
     }
     time_t startTime=time(0);
+    //start clock
     //create sensors
     temperature temp1(startTime);
     light light1(startTime);
-    double currTemp;
-    bool tempResult=temp1.actual(&currTemp);
-    cout << "Temp is:" <<currTemp<< "\u00b0C" << endl;
-    double currLight;
-    bool lightResult=light1.actual(&currLight);
-    cout << "Light is:" <<currLight<< "Lux" << endl;
-    cout << "Temperture pin:" <<temperaturePin<< endl;
-    cout << "light pin:" <<lightPin<< endl;
+	for(int i=0;i<2000;i++){
+		clock_t currTime=clock()/CLOCKS_PER_SEC;
+		double currTemp;
+		bool tempResult=temp1.log(currTime,&currTemp);
+		double currLight;
+		bool lightResult=light1.log(currTime,&currLight);
+    }
     return 0;
 }

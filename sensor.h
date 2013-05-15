@@ -30,7 +30,9 @@ protected:
     time_t startTime;
     clock_t timeNow;
     atod serialBus;
-    double lastSensorTime;
+    clock_t lastLogTime;
+    double totalSinceLastLog;
+    int loopsSinceLastLog;
     bool rawRead(double *value);
 private:
 	file logFile;

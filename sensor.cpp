@@ -18,20 +18,36 @@ sensor::sensor(): logFile(sensorName), serialBus(14,10,13,12,sensorType){
     //atod serialBus(14,10,13,12,sensorType);
     startTime=time(0);
     timeNow=startTime;
-    lastSensorTime=timeNow;
+    lastLogTime=timeNow;
+	loopsSinceLastLog=0;
+	totalSinceLastLog=0;
 }
 bool sensor::actual(double *value){
 	return false;
 }
 
 bool sensor::log(clock_t timeNow, double *value){
+	//read the value from the sensor with a time.
     bool readSucess=actual(value);
-    double logTime = startTime+ timeNow/CLOCKS_PER_SEC;
-    string logLine;
-    ostringstream sstream;
-    sstream << logTime << "," << value;
-    logLine= sstream.str();
-    logFile.append(logLine);
+    double logTime = startTime+ timeNow;
+    //add the latest value to the total and register it in the loops
+	totalSinceLastLog+=value;
+	loopsSinceLastLog++;
+    //is the last log time over 2 seconds ago? So log it then.
+    if((lastLogTime+2)<logTime){
+    	//convert the average to a string
+    	lastLogTime=logTime;
+		string logLine;
+		ostringstream sstream;
+		sstream << logTime << "," << (totalSinceLastLog/loopsSinceLastLog);
+		logLine= sstream.str();
+		//log the line to the file
+		logFile.append(logLine);
+		//reset average variables
+		loopsSinceLastLog=0;
+		totalSinceLastLog=0;
+    }
+    return true;
 }
 
 //this is the function that will need to be dramatically changed
