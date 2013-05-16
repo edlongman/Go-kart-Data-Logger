@@ -25,7 +25,7 @@ int main(){
     //create sensors
     temperature temp1(startTime);
     light light1(startTime);
-	for(int i=0;i<200000000;i++){
+	for(int i=0;i<200;i++){
 		clock_t currTime=clock()/CLOCKS_PER_SEC;
 		double currTemp;
 		bool tempResult=temp1.log(currTime,&currTemp);

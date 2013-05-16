@@ -12,7 +12,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#define baseLoc "/output/"
+#define baseLoc "log/"
 #define ext ".txt"
 
 
