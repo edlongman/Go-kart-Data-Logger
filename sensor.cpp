@@ -34,7 +34,7 @@ bool sensor::log(clock_t timeNow, double *value){
 	totalSinceLastLog+=*value;
 	loopsSinceLastLog++;
     //is the last log time over 2 seconds ago? So log it then.
-    if((lastLogTime+2)<logTime){
+    if((lastLogTime+0.2)<logTime){
     	//convert the average to a string
     	lastLogTime=logTime;
 		string logLine;
