@@ -16,9 +16,9 @@ using namespace std;
 sensor::sensor(): logFile(sensorName), serialBus(14,10,13,12,sensorType){
 	//file logFile(sensorName);
     //atod serialBus(14,10,13,12,sensorType);
-    startTime=clock();
-    timeNow=startTime;
-    lastLogTime=timeNow;
+    startTime=time(0);
+    timeNow=0;
+    lastLogTime=0;
 	loopsSinceLastLog=0;
 	totalSinceLastLog=0;
 }
@@ -29,7 +29,7 @@ bool sensor::actual(double *value){
 bool sensor::log(clock_t timeNow, double *value){
 	//read the value from the sensor with a time.
     bool readSucess=actual(value);
-    double logTime = timeNow;
+    double logTime = timeNow-startTime;
     //add the latest value to the total and register it in the loops
 	totalSinceLastLog+=*value;
 	loopsSinceLastLog++;
