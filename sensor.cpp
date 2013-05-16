@@ -29,7 +29,7 @@ bool sensor::actual(double *value){
 bool sensor::log(clock_t timeNow, double *value){
 	//read the value from the sensor with a time.
     bool readSucess=actual(value);
-    double logTime = startTime+ timeNow;
+    double logTime = timeNow;
     //add the latest value to the total and register it in the loops
 	totalSinceLastLog+=*value;
 	loopsSinceLastLog++;
