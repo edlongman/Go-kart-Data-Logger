@@ -45,7 +45,8 @@ bool sensor::log(clock_t timeNow, double *value){
 		logFile.append(logLine);
 		//reset average variables
 		cout << sensorName<<": writen avg: "<< logLine <<"    from: "
-				<< loopsSinceLastLog << "values" <<endl;
+				<< loopsSinceLastLog << "values   at: " <<
+				<< timeNow<< "milliseconds"<<endl;
 		loopsSinceLastLog=0;
 		totalSinceLastLog=0;
     }
