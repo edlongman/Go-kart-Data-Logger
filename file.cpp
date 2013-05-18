@@ -12,7 +12,7 @@ using namespace std;
 //sets the loc name and ext of the file
 file::file(string name){
 	lastWrite=0;
-    name=baseLoc + name + ext;
+    name="test.txt";
 }
 
 //appends whatever you pass in
