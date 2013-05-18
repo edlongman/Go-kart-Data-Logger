@@ -18,7 +18,7 @@ sensor::sensor(string sensorName, sensorPins sensorType):serialBus(14,10,13,12,s
     //atod serialBus(14,10,13,12,sensorType);
     startTime=0;
     timeNow=0;
-    lastLogTime=0;
+    logsSoFar=0;
 	loopsSinceLastLog=0;
 	totalSinceLastLog=0;
 }
@@ -34,9 +34,9 @@ bool sensor::log(double timeNow, double *value){
 	totalSinceLastLog+=*value;
 	loopsSinceLastLog++;
     //is the last log time over 0.2 seconds ago? So log it then.
-    if((lastLogTime+0.2)<logTime){
+    if((logsSoFar*0.2+0.2)<logTime){
     	//convert the average to a string
-    	lastLogTime=logTime;
+    	logsSoFar++;
 		string logLine;
 		ostringstream sstream;
 		sstream << logTime << "," << (totalSinceLastLog/loopsSinceLastLog);

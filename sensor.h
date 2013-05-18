@@ -30,7 +30,7 @@ protected:
     time_t startTime;
     double timeNow;
     atod serialBus;
-    double lastLogTime;
+    int logsSoFar;
     double totalSinceLastLog;
     int loopsSinceLastLog;
     bool rawRead(double *value);
