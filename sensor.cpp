@@ -63,7 +63,7 @@ temperature::temperature(time_t startTime){
 	sensorType=temperaturePin;
 	sensorName="temperature";
     timeNow=startTime;
-    logFile=file(sensorName);
+    file logFile(sensorName);
     atod serialBus(14,10,13,12,sensorType);
 }
 bool temperature::actual(double *value){
