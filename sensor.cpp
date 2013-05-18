@@ -13,7 +13,7 @@
 
 using namespace std;
 
-sensor::sensor(): logFile(sensorName), serialBus(14,10,13,12,sensorType){
+sensor::sensor(string sensorName, sensorPins sensorType):serialBus(14,10,13,12,sensorType),logFile(sensorName){
 	//file logFile(sensorName);
     //atod serialBus(14,10,13,12,sensorType);
     startTime=0;
@@ -59,7 +59,7 @@ bool sensor::rawRead(double *value){
 	*value=serialBus.voltage();
 	return true;
 }
-temperature::temperature(time_t startTime){
+temperature::temperature(time_t startTime):sensor("temperature",temperaturePin){
 	sensorType=temperaturePin;
 	sensorName="temperature";
     timeNow=startTime;
@@ -74,7 +74,7 @@ bool temperature::actual(double *value){
 }
 
 
-light::light(time_t startTime){
+light::light(time_t startTime):sensor("light",lightPin){
 	sensorType=lightPin;
 	sensorName="light";
     timeNow=startTime;

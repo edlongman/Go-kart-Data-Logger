@@ -19,7 +19,7 @@ enum sensorPins {temperaturePin=2,lightPin=1};
 //this is the basic layer for reading and logging values
 class sensor {
 public:
-	sensor();
+	sensor(std::string sensorName, sensorPins sensorType);
     //use the time now to stamp the value input into the file
     //the function writes the reading into the *value
     bool log(double timeNow,double *value);
