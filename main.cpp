@@ -20,13 +20,12 @@ int main(){
         //exit (1) ;
         return 0;
     }
-    time_t startTime=time(0);
     //start clock
     //create sensors
-    temperature temp1(startTime);
-    light light1(startTime);
-    clock_t currTime=startTime+clock()/CLOCKS_PER_SEC;
-	while ((currTime)<(startTime+2)){
+    temperature temp1(0);
+    light light1(0);
+    clock_t currTime=clock()/CLOCKS_PER_SEC;
+	while ((currTime)<(2)){
 		currTime=clock()/CLOCKS_PER_SEC;
 		double currTemp;
 		bool tempResult=temp1.log(currTime,&currTemp);

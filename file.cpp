@@ -18,7 +18,7 @@ file::file(string name){
 //appends whatever you pass in
 bool file::append(string line){
     stream.open(name.c_str());
-    stream << line << "\n";
+    stream << line << endl;
     stream.close();
     return stream.fail();
 }
