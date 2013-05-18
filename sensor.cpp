@@ -34,7 +34,6 @@ bool sensor::log(clock_t timeNow, double *value){
 	totalSinceLastLog+=*value;
 	loopsSinceLastLog++;
     //is the last log time over 0.2 seconds ago? So log it then.
-	cout << (lastLogTime+0.2)<<endl;
     if((lastLogTime+0.2)<logTime){
     	//convert the average to a string
     	lastLogTime=logTime;
