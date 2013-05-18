@@ -66,6 +66,8 @@ temperature::temperature(time_t startTime){
 }
 bool temperature::actual(double *value){
 	double voltage;
+	//this is going to be ugly!
+	cout << voltage << endl;
 	bool success=rawRead(&voltage);
 	*value=(voltage-0.5)*100;
 	return success;
