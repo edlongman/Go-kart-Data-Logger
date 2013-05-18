@@ -18,12 +18,9 @@ file::file(string plainname){
 //appends whatever you pass in
 bool file::append(string line){
     stream.open(name.c_str(), fstream::app);
-    if(stream.is_open()){
-		stream << line << endl;
-		stream.close();
-		return stream.fail();
-    }
-    else {cout << "couldn't write";}
+	stream << line << endl;
+	stream.close();
+	return stream.fail();
 }
 
 //removes the file from the file system
