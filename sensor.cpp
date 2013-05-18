@@ -33,7 +33,7 @@ bool sensor::log(clock_t timeNow, double *value){
     //add the latest value to the total and register it in the loops
 	totalSinceLastLog+=*value;
 	loopsSinceLastLog++;
-    //is the last log time over 2 seconds ago? So log it then.
+    //is the last log time over 0.2 seconds ago? So log it then.
     if((lastLogTime+0.2)<logTime){
     	//convert the average to a string
     	lastLogTime=logTime;
@@ -44,8 +44,8 @@ bool sensor::log(clock_t timeNow, double *value){
 		//log the line to the file
 		logFile.append(logLine);
 		//reset average variables
-		cout << sensorName<<": writen logline: "<< logLine <<"    Avg of: "
-				<< loopsSinceLastLog <<endl;
+		cout << sensorName<<": writen logline: "<< logLine <<"    Last val: "
+				<< readSucess <<endl;
 		loopsSinceLastLog=0;
 		totalSinceLastLog=0;
     }
