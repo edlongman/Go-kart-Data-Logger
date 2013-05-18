@@ -26,7 +26,7 @@ bool sensor::actual(double *value){
 	return false;
 }
 
-bool sensor::log(clock_t timeNow, double *value){
+bool sensor::log(double timeNow, double *value){
 	//read the value from the sensor with a time.
     bool readSucess=actual(value);
     double logTime = timeNow-startTime;

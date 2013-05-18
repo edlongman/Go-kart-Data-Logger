@@ -22,7 +22,7 @@ public:
 	sensor();
     //use the time now to stamp the value input into the file
     //the function writes the reading into the *value
-    bool log(clock_t timeNow,double *value);
+    bool log(double timeNow,double *value);
     virtual bool actual(double *value);
 protected:
     sensorPins sensorType;
