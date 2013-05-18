@@ -26,6 +26,7 @@ int main(){
     light light1(0);
     double currTime=clock()/CLOCKS_PER_SEC;
 	while ((currTime)<(2)){
+		cout << clock()/CLOCKS_PER_SEC << endl;
 		currTime=clock()/CLOCKS_PER_SEC;
 		double currTemp;
 		bool tempResult=temp1.log(currTime,&currTemp);
