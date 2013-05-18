@@ -17,7 +17,7 @@ file::file(string name){
 
 //appends whatever you pass in
 bool file::append(string line){
-    stream.open(name.c_str());
+    stream.open("test.txt");
     if(stream.is_open()){
 		stream << line << endl;
 		stream.close();
