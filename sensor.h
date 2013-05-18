@@ -28,7 +28,7 @@ protected:
     sensorPins sensorType;
     std::string sensorName;
     time_t startTime;
-    clock_t timeNow;
+    double timeNow;
     atod serialBus;
     clock_t lastLogTime;
     double totalSinceLastLog;
