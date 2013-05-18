@@ -10,14 +10,14 @@
 using namespace std;
 
 //sets the loc name and ext of the file
-file::file(string name){
+file::file(string plainname){
 	lastWrite=0;
-    name="test.txt";
+    name=baseLoc + plainname + ext;
 }
 
 //appends whatever you pass in
 bool file::append(string line){
-    stream.open("test.txt", fstream::app);
+    stream.open(name.c_str(), fstream::app);
     if(stream.is_open()){
 		stream << line << endl;
 		stream.close();
