@@ -23,7 +23,7 @@ public:
     //use the time now to stamp the value input into the file
     //the function writes the reading into the *value
     bool log(clock_t timeNow,double *value);
-    bool actual(double *value);
+    virtual bool actual(double *value);
 protected:
     sensorPins sensorType;
     std::string sensorName;
@@ -44,7 +44,7 @@ public:
 	sensorPins sensorType: temperaturePin;
 	temperature(time_t startTime);
 	//IN DEGREES C
-    bool actual(double *value);
+    virtual bool actual(double *value);
 };
 
 class light : public sensor {
@@ -52,6 +52,6 @@ public:
 	sensorPins sensorType: lightPin;
 	light(time_t startTime);
 	//IN LUX (LUMSNS/sqrFT)
-    bool actual(double *value);
+    virtual bool actual(double *value);
 };
 #endif /* defined(__RPi__sensor__) */
