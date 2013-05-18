@@ -34,7 +34,6 @@ protected:
     double totalSinceLastLog;
     int loopsSinceLastLog;
     bool rawRead(double *value);
-private:
 	file logFile;
 };
 
