@@ -7,20 +7,22 @@
 //
 
 #include "file.h"
+#include <SD.h>
 using namespace std;
 
 //sets the loc name and ext of the file
-file::file(string plainname){
+file::file(String plainname){
 	lastWrite=0;
     name=baseLoc + plainname + ext;
 }
 
 //appends whatever you pass in
-bool file::append(string line){
-    stream.open(name.c_str(), fstream::app);
-	stream << line << endl;
-	stream.close();
-	return stream.fail();
+bool file::append(String line){
+    if(sdcard){
+        File openfile=SD.open(name.c_str());
+	openfile.println(line);
+	openfile.close();
+    }
 }
 
 //removes the file from the file system

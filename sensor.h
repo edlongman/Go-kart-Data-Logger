@@ -10,7 +10,6 @@
 #define __RPi__sensor__
 
 #include <iostream>
-#include "atod.h"
 #include "file.h"
 
 //this enum associates the sensor with the port that it is connected to for ease of use!
@@ -29,7 +28,6 @@ protected:
     std::string sensorName;
     time_t startTime;
     double timeNow;
-    atod serialBus;
     int logsSoFar;
     double totalSinceLastLog;
     int loopsSinceLastLog;

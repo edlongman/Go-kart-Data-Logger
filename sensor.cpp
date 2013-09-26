@@ -6,7 +6,6 @@
 //  Copyright (c) 2013 Ed Longman. All rights reserved.
 //
 
-#include <time.h>
 #include <sstream>
 #include "file.h"
 #include "sensor.h"
@@ -14,8 +13,6 @@
 using namespace std;
 
 sensor::sensor(string sensorName, sensorPins sensorType):serialBus(14,10,13,12,sensorType),logFile(sensorName){
-	//file logFile(sensorName);
-    //atod serialBus(14,10,13,12,sensorType);
     startTime=0;
     timeNow=0;
     logsSoFar=0;
@@ -64,7 +61,6 @@ temperature::temperature(time_t startTime):sensor("temperature",temperaturePin){
 	sensorName="temperature";
     timeNow=startTime;
     file logFile(sensorName);
-    atod serialBus(14,10,13,12,sensorType);
 }
 bool temperature::actual(double *value){
 	double voltage;
@@ -78,7 +74,6 @@ light::light(time_t startTime):sensor("light",lightPin){
 	sensorType=lightPin;
 	sensorName="light";
     timeNow=startTime;
-    atod serialBus(14,10,13,12,sensorType);
 }
 bool light::actual(double *value){
 	double voltage;

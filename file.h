@@ -1,3 +1,4 @@
+
 //
 //  file.h
 //  RPi
@@ -10,20 +11,21 @@
 #define __RPi__file__
 
 #include <iostream>
+#include <SD.h>
 #include <fstream>
-#include <string>
+#include <WString.h>
 #define baseLoc "log/"
 #define ext ".txt"
 
 
 using namespace std;
 class file{
-    string name;
-    time_t lastWrite;
-    ofstream stream;
+    String name;
+    int lastWrite;
+    bool sdcard;
 public:
-    file(string name);
-    bool append(string line);
+    file(String name);
+    bool append(String line);
     bool wipe();
     bool destroy();
 };
