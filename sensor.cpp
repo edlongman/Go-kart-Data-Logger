@@ -92,7 +92,7 @@ bool light::actual(double *value){
 	}
 }
 
-wheelspeed::wheelspeed(double startTime):sensor("wheelspeed",wheelspeedPim){
+wheelspeed::wheelspeed(double startTime):sensor("wheelspeed",wheelspeedPin){
 	sensorType=wheelspeedPin;
 	sensorName="wheelspeed";
     timeNow=startTime;
