@@ -1,5 +1,7 @@
 #include <Wire.h>
 #include <SD.h>
+#include "sensor.h"
+#include "file.h"
 
 //
 //  main.cpp
@@ -9,7 +11,7 @@
 //  Copyright (c) 2013 ed. All rights reserved.
 //
   // This is the I2C address
-#include "sensor.h"
+
 
 temperature temp1(0);
 light light1(0);

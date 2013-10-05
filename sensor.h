@@ -64,5 +64,5 @@ public:
     virtual bool actual(double *value);
 };
 
-void logWheelRotation()
+void logWheelRotation();
 #endif /* defined(__RPi__sensor__) */
