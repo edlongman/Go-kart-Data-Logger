@@ -109,3 +109,7 @@ bool wheelspeed::actual(double *value){
 		return false;
 	}
 }
+
+void logWheelRotation(){
+   
+}

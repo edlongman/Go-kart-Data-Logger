@@ -14,6 +14,9 @@
 
 //this enum associates the sensor with the port that it is connected to for ease of use!
 enum sensorPins {temperaturePin=2,lightPin=1};
+int lastReadWheel;
+int lastButOneReadWheel;
+int totalWheelDistance;
 
 //this is the basic layer for reading and logging values
 class sensor {
