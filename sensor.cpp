@@ -111,5 +111,7 @@ bool wheelspeed::actual(double *value){
 }
 
 void logWheelRotation(){
-   
+    lastButOneReadWheel=lastReadWheel;
+    lastReadWheel=micros();
+    totalWheelDistance+=wheelCircumference;
 }

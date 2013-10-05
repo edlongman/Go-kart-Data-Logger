@@ -12,6 +12,8 @@
 #include <iostream>
 #include "file.h"
 
+#define wheelCircumference=1214 //mm
+
 //this enum associates the sensor with the port that it is connected to for ease of use!
 enum sensorPins {temperaturePin=2,lightPin=1};
 int lastReadWheel;
