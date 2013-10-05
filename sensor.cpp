@@ -109,35 +109,3 @@ bool wheelspeed::actual(double *value){
 		return false;
 	}
 }
-
-
-// Convert binary coded decimal to normal decimal numbers
-byte bcdToDec(byte val)
-{
-  return ( (val/16*10) + (val%16) );
-}
- 
-// Gets the date and time from the ds1307 and prints result
-String getTimestamp()
-{
-  // Reset the register pointer
-  Wire.beginTransmission(DS1307_I2C_ADDRESS);
-  I2C_WRITE(zero);
-  Wire.endTransmission();
- 
-  Wire.requestFrom(DS1307_I2C_ADDRESS, 7);
- 
-  // A few of these need masks because certain bits are control bits
-  second     = bcdToDec(I2C_READ() & 0x7f);
-  minute     = bcdToDec(I2C_READ());
-  hour       = bcdToDec(I2C_READ() & 0x3f);  // Need to change this if 12 hour am/pm
-  dayOfWeek  = bcdToDec(I2C_READ());
-  dayOfMonth = bcdToDec(I2C_READ());
-  month      = bcdToDec(I2C_READ());
-  year       = bcdToDec(I2C_READ());
-  
-  return String(year) + "-" + String(month) + "-" + 
-           String(dayOfMonth) + " " + String(hour) + ":" + 
-           String(minute) + ":" + String(second);
- 
-}
