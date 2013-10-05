@@ -1,3 +1,4 @@
+
 //
 //  file.cpp
 //  RPi
@@ -7,39 +8,32 @@
 //
 
 #include "file.h"
+#include "Arduino.h"
 #include <SD.h>
-using namespace std;
 
 //sets the loc name and ext of the file
-file::file(String plainname){
+save::save(String plainname){
 	lastWrite=0;
     name=baseLoc + plainname + ext;
 }
 
 //appends whatever you pass in
-bool file::append(String line){
+bool save::append(String line){
     if(sdcard){
-        File openfile=SD.open(name.c_str());
+        openfile=SD.open(name.c_str());
 	openfile.println(line);
 	openfile.close();
     }
 }
 
 //removes the file from the file system
-bool file::destroy(){
-    if (remove(name.c_str())==0) {
-        return true;
-    }
-    return false;
+bool save::destroy(){
+    // to implementreturn SD.remove(name.c_str())
 }
 
 //removes everything from the file
-bool file::wipe(){
-    bool gone = destroy();
-    stream.open(name.c_str());
-    if (gone && !stream.fail()) {
-        stream.close();
-        return true;
-    }
+bool save::wipe(){
+    //bool gone = destroy();
+    //openfile.open(name.c_str());
     return false;
 }

@@ -12,19 +12,20 @@
 
 #include <iostream>
 #include <SD.h>
-#include <fstream>
+#include "Arduino.h"
 #include <WString.h>
 #define baseLoc "log/"
 #define ext ".txt"
 
 
 using namespace std;
-class file{
+class save{
     String name;
     int lastWrite;
     bool sdcard;
+    File openfile;
 public:
-    file(String name);
+    save(String name);
     bool append(String line);
     bool wipe();
     bool destroy();

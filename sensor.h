@@ -18,28 +18,28 @@ enum sensorPins {temperaturePin=2,lightPin=1};
 //this is the basic layer for reading and logging values
 class sensor {
 public:
-	sensor(std::string sensorName, sensorPins sensorType);
+	sensor(String sensorName, sensorPins sensorType);
     //use the time now to stamp the value input into the file
     //the function writes the reading into the *value
     bool log(double timeNow,double *value);
     virtual bool actual(double *value);
 protected:
     sensorPins sensorType;
-    std::string sensorName;
-    time_t startTime;
+    String sensorName;
+    int startTime;
     double timeNow;
     int logsSoFar;
     double totalSinceLastLog;
     int loopsSinceLastLog;
     bool rawRead(double *value);
-	file logFile;
+	save logFile;
 };
 
 
 class temperature : public sensor {
 public:
 	sensorPins sensorType: temperaturePin;
-	temperature(time_t startTime);
+	temperature(double startTime);
 	//IN DEGREES C
     virtual bool actual(double *value);
 };
@@ -47,8 +47,10 @@ public:
 class light : public sensor {
 public:
 	sensorPins sensorType: lightPin;
-	light(time_t startTime);
+	light(double startTime);
 	//IN LUX (LUMSNS/sqrFT)
     virtual bool actual(double *value);
 };
+
+String getTimestamp();
 #endif /* defined(__RPi__sensor__) */

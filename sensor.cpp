@@ -9,10 +9,16 @@
 #include <sstream>
 #include "file.h"
 #include "sensor.h"
+#include <Wire.h>
 
+#define DS1307_I2C_ADDRESS 0x68
+#define I2C_WRITE Wire.write 
+#define I2C_READ Wire.read
+byte zero;
+byte second, minute, hour, dayOfWeek, dayOfMonth, month, year;
 using namespace std;
 
-sensor::sensor(string sensorName, sensorPins sensorType):serialBus(14,10,13,12,sensorType),logFile(sensorName){
+sensor::sensor(String sensorName, sensorPins sensorType):logFile(sensorName){
     startTime=0;
     timeNow=0;
     logsSoFar=0;
@@ -26,7 +32,7 @@ bool sensor::actual(double *value){
 bool sensor::log(double timeNow, double *value){
 	//read the value from the sensor with a time.
     bool readSucess=actual(value);
-    double logTime = timeNow-startTime;
+    long logTime = timeNow-startTime;
     //add the latest value to the total and register it in the loops
 	totalSinceLastLog+=*value;
 	loopsSinceLastLog++;
@@ -34,16 +40,14 @@ bool sensor::log(double timeNow, double *value){
     if((logsSoFar*0.2+0.2)<logTime){
     	//convert the average to a string
     	logsSoFar++;
-		string logLine;
-		ostringstream sstream;
-		sstream << logTime << "," << (totalSinceLastLog/loopsSinceLastLog);
-		logLine= sstream.str();
+		String logLine;
+                char* sensorAvg;
+                dtostrf(totalSinceLastLog/loopsSinceLastLog,5,3,sensorAvg);
+		logLine = logTime + "," + String(sensorAvg);
 		//log the line to the file
 		logFile.append(logLine);
 		//reset average variables
-		cout << sensorName<<": writen avg: "<< logLine <<"    from: "
-				<< loopsSinceLastLog << "values   at: "
-				<< timeNow<< "seconds"<<endl;
+		//could put log serial output here!
 		loopsSinceLastLog=0;
 		totalSinceLastLog=0;
     }
@@ -53,14 +57,14 @@ bool sensor::log(double timeNow, double *value){
 //this is the function that will need to be dramatically changed
 //when hardware is changed as this is hardware dependant
 bool sensor::rawRead(double *value){
-	*value=serialBus.voltage();
+	*value=analogRead(sensorType);
 	return true;
 }
-temperature::temperature(time_t startTime):sensor("temperature",temperaturePin){
+temperature::temperature(double startTime):sensor("temperature",temperaturePin){
 	sensorType=temperaturePin;
 	sensorName="temperature";
     timeNow=startTime;
-    file logFile(sensorName);
+    save logFile(sensorName);
 }
 bool temperature::actual(double *value){
 	double voltage;
@@ -70,7 +74,7 @@ bool temperature::actual(double *value){
 }
 
 
-light::light(time_t startTime):sensor("light",lightPin){
+light::light(double startTime):sensor("light",lightPin){
 	sensorType=lightPin;
 	sensorName="light";
     timeNow=startTime;
@@ -86,4 +90,54 @@ bool light::actual(double *value){
 	}else{
 		return false;
 	}
+}
+
+wheelspeed::wheelspeed(double startTime):sensor("wheelspeed",wheelspeedPim){
+	sensorType=wheelspeedPin;
+	sensorName="wheelspeed";
+    timeNow=startTime;
+}
+bool wheelspeed::actual(double *value){
+	double voltage;
+	bool success=rawRead(&voltage);
+	if(!(voltage==0.0)){
+		//sensor resitsance it 10000ohms when at 0LUX
+		double resistance=1000.0*(3.3-voltage)/voltage;
+		*value=100/resistance;
+		return true;
+	}else{
+		return false;
+	}
+}
+
+
+// Convert binary coded decimal to normal decimal numbers
+byte bcdToDec(byte val)
+{
+  return ( (val/16*10) + (val%16) );
+}
+ 
+// Gets the date and time from the ds1307 and prints result
+String getTimestamp()
+{
+  // Reset the register pointer
+  Wire.beginTransmission(DS1307_I2C_ADDRESS);
+  I2C_WRITE(zero);
+  Wire.endTransmission();
+ 
+  Wire.requestFrom(DS1307_I2C_ADDRESS, 7);
+ 
+  // A few of these need masks because certain bits are control bits
+  second     = bcdToDec(I2C_READ() & 0x7f);
+  minute     = bcdToDec(I2C_READ());
+  hour       = bcdToDec(I2C_READ() & 0x3f);  // Need to change this if 12 hour am/pm
+  dayOfWeek  = bcdToDec(I2C_READ());
+  dayOfMonth = bcdToDec(I2C_READ());
+  month      = bcdToDec(I2C_READ());
+  year       = bcdToDec(I2C_READ());
+  
+  return String(year) + "-" + String(month) + "-" + 
+           String(dayOfMonth) + " " + String(hour) + ":" + 
+           String(minute) + ":" + String(second);
+ 
 }
