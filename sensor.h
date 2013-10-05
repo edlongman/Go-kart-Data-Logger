@@ -15,7 +15,7 @@
 #define wheelCircumference=1214 //mm
 
 //this enum associates the sensor with the port that it is connected to for ease of use!
-enum sensorPins {temperaturePin=2,lightPin=1};
+enum sensorPins {temperaturePin=2,lightPin=1,wheelspeedPin=3};
 int lastReadWheel;
 int lastButOneReadWheel;
 int totalWheelDistance;
@@ -57,5 +57,12 @@ public:
     virtual bool actual(double *value);
 };
 
-String getTimestamp();
+class wheelspeed : public sensor {
+public:
+	sensorPins sensorType: wheelspeedPin;
+	wheelspeed(double startTime);
+    virtual bool actual(double *value);
+};
+
+void logWheelRotation()
 #endif /* defined(__RPi__sensor__) */
