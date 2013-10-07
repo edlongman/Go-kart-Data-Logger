@@ -16,9 +16,7 @@
 
 //this enum associates the sensor with the port that it is connected to for ease of use!
 enum sensorPins {temperaturePin=2,lightPin=1,wheelspeedPin=3};
-int lastReadWheel;
-int lastButOneReadWheel;
-int totalWheelDistance;
+
 
 //this is the basic layer for reading and logging values
 class sensor {
@@ -59,9 +57,14 @@ public:
 
 class wheelspeed : public sensor {
 public:
-	sensorPins sensorType: wheelspeedPin;
-	wheelspeed(double startTime);
+    sensorPins sensorType: wheelspeedPin;
+    wheelspeed(double startTime);
     virtual bool actual(double *value);
+    void logWheelRotation();
+private:
+    int lastReadWheel;
+    int lastButOneReadWheel;
+    int totalWheelDistance;
 };
 
 void logWheelRotation();
