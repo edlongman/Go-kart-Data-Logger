@@ -66,6 +66,4 @@ private:
     int lastButOneReadWheel;
     int totalWheelDistance;
 };
-
-void logWheelRotation();
 #endif /* defined(__RPi__sensor__) */
