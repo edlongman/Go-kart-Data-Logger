@@ -10,7 +10,7 @@
 #include "sensor.h"
 #include <Wire.h>
 
-#define wheelCircumference=1214 //mm
+#define wheelCircumference 1214 //mm
 #define DS1307_I2C_ADDRESS 0x68
 #define I2C_WRITE Wire.write 
 #define I2C_READ Wire.read
