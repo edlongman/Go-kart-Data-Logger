@@ -101,15 +101,14 @@ wheelspeed::wheelspeed(double startTime):sensor("wheelspeed",wheelspeedPin){
     lastReadWheel=micros();
 }
 bool wheelspeed::actual(double *value){
-    double voltage;
-    bool success=rawRead(&voltage);
-    if(!(voltage==0.0)){
-        //sensor resitsance it 10000ohms when at 0LUX
-        double resistance=1000.0*(3.3-voltage)/voltage;
-        *value=100/resistance;
-        return true;
-    }else{
-        return false;
+    long timeGap=lastReadWheel-lastButOneReadWheel;
+    if(timeGap<2000000){
+      //try and calculate speed
+      *value=(wheelCircumference*0.000001*0.6213711922373)/(timeGap/3600000000);
+    }
+    else{
+       //not moving or less than ~1mph
+      return false; 
     }
 }
 

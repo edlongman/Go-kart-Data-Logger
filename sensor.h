@@ -58,7 +58,6 @@ public:
     sensorPins sensorType: wheelspeedPin;
     wheelspeed(double startTime);
     virtual bool actual(double *value);
-    double speed();
     void logWheelRotation();
 private:
     long lastReadWheel;
