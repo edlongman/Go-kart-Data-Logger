@@ -7,7 +7,7 @@
 //
 
 #include "file.h"
-#include "sensor.h"
+#include "hardware.h"
 #include <Wire.h>
 
 #define wheelCircumference 1214 //mm

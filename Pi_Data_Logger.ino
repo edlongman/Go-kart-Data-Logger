@@ -1,6 +1,6 @@
 #include <Wire.h>
 #include <SD.h>
-#include "sensor.h"
+#include "hardware.h"
 #include "file.h"
 
 //
