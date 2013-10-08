@@ -13,7 +13,7 @@
 
 //sets the loc name and ext of the file
 save::save(String plainname){
-	lastWrite=0;
+    lastWrite=0;
     name=baseLoc + plainname + ext;
 }
 
@@ -21,8 +21,8 @@ save::save(String plainname){
 bool save::append(String line){
     if(sdcard){
         openfile=SD.open(name.c_str());
-	openfile.println(line);
-	openfile.close();
+        openfile.println(line);
+        openfile.close();
     }
 }
 
@@ -36,4 +36,4 @@ bool save::wipe(){
     //bool gone = destroy();
     //openfile.open(name.c_str());
     return false;
-}
+}    

@@ -10,7 +10,6 @@
 #ifndef __RPi__file__
 #define __RPi__file__
 
-#include <iostream>
 #include <SD.h>
 #include "Arduino.h"
 #include <WString.h>
