@@ -58,10 +58,11 @@ public:
     sensorPins sensorType: wheelspeedPin;
     wheelspeed(double startTime);
     virtual bool actual(double *value);
+    double speed();
     void logWheelRotation();
 private:
-    int lastReadWheel;
-    int lastButOneReadWheel;
-    int totalWheelRotations;
+    long lastReadWheel;
+    long lastButOneReadWheel;
+    long totalWheelRotations;
 };
 #endif /* defined(__RPi__sensor__) */
