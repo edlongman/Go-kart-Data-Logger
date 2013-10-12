@@ -117,3 +117,54 @@ void wheelspeed::logWheelRotation(){
     totalWheelRotations++;
     lastReadWheel=micros();
 }
+
+
+
+
+
+display7segment::display7segment(int address){
+    expanderAddress=address;
+    byte numbersAndByte[10]={
+      B11101110,//0
+      B00100100,//1
+      B10111010,//2
+      B10110110,//3
+      B01110100,//4
+      B11010110,//5
+      B10111110,//6
+      B10100100,//7
+      B11111110,//8
+      B11110100 //9
+    };
+    
+    //setup MCP
+    Wire.beginTransmission(expanderAddress);
+    Wire.write(0x00);//IODIRA
+    Wire.write(0x00);//Set Outputs
+    Wire.write(0x01);//IODIRB
+    Wire.write(0x00);//Set Outputs
+    
+}
+
+void display7segment::setValue(double value){
+  int dpPosition=0;
+  //get first digit
+  if(value<10){
+      //show to 1d.p
+      value=value*10;
+      dpPosition=1;
+  }
+  Wire.beginTransmission(expanderAddress);
+  Wire.write(0x12);
+  int firstVal=(int)value;
+  Wire.write(numbersAndByte[firstVal]);
+  Wire.write(0x13);
+  //get the second digit and round
+  int secondVal=(int)(value-firstVal+0.5);
+  Wire.write(numbersAndByte[secondVal]);
+  Wire.write(0x12+dpPosition);
+  Wire.write(0x00);
+  Wire.endTransmission();
+  
+  
+}

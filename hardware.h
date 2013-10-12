@@ -77,8 +77,9 @@ private:
 class display7segment{
 public:
     display7segment(int expanderAddress);
-    bool setValue(double value);
+    void setValue(double value);
 private:
+    void setPin(bool on);
     int expanderAddress;
     //send this to the chip and the digit applies like on diagram
 //   **1**   
@@ -90,18 +91,7 @@ private:
 //  5     6  
 //  *     * 
 //   **7**  *8
-    static int numbersAndByte[10]=[
-      B11101110,//0
-      B00100100,//1
-      B10111010,//2
-      B10110110,//3
-      B01110100,//4
-      B11010110,//5
-      B10111110,//6
-      B10100100,//7
-      B11111110,//8
-      B11110100 //9
-    ]
-    static int dpPlace=8
+    byte numbersAndByte[10];
+    static const int dpPlace=8;
 };
 #endif /* defined(__RPi__sensor__) */
