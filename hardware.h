@@ -91,7 +91,7 @@ private:
 //  5     6  
 //  *     * 
 //   **7**  *8
-    byte numbersAndByte[10];
+    int numbersAndPin[10];
     static const int dpPlace=8;
 };
 #endif /* defined(__RPi__sensor__) */
