@@ -252,5 +252,13 @@ void display7segment::setValue(double value){
   }
   GpioAChange^=currentGpioAByte;
   GpioBChange^=currentGpioBByte;
+  Wire.beginTransmission(expanderAddress);
+  Wire.write(0x12);
+  Wire.write(currentGpioAByte);
+  Wire.endTransmission();
+  Wire.beginTransmission(expanderAddress);
+  Wire.write(0x13);
+  Wire.write(currentGpioBByte);
+  Wire.endTransmission();
   
 }
