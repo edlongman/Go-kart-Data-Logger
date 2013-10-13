@@ -124,10 +124,10 @@ McpPin::McpPin(byte _port, byte _pin){
     pin=_pin;
 }
 McpPin::McpPin(int id){
-  port=(byte)6;
+  port=0x13;
   if(id>7){
       id=id-7;
-      port=(byte)7;
+      port=0x13;
   }
   pin=pow(2,id);
   
@@ -229,10 +229,27 @@ void display7segment::setValue(double value){
   byte GpioBChange=0x00;
   int firstVal=(int)value;
   for(int i=0;i<size(numbersAndPinSegment1[firstVal]);i++){
+      mcpPin iterationPin=numbersAndPinSegment1[firstVal];
       //loop through pins checking whether it's for register A or B and add them to the byte
+      if(iterationPin.getPortAddress()==0x12){
+          GpioAChange|=(0x00<<iterationPin.getPinAddress());
+      }
+      else{
+          GpioBChange|=(0x00<<iterationPin.getPinAddress());
+      }
   }
   //get the second digit and round
   int secondVal=(int)(value-firstVal+0.5);
+  for(int i=0;i<size(numbersAndPinSegment2[firstVal]);i++){
+      mcpPin iterationPin=numbersAndPinSegment2[firstVal];
+      //loop through pins checking whether it's for register A or B and add them to the byte
+      if(iterationPin.getPortAddress()==0x12){
+          GpioAChange|=(0x00<<iterationPin.getPinAddress());
+      }
+      else{
+          GpioBChange|=(0x00<<iterationPin.getPinAddress());
+      }
+  }
   
   
 }
