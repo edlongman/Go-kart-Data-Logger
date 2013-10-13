@@ -124,7 +124,12 @@ McpPin::McpPin(byte _port, byte _pin){
     pin=_pin;
 }
 McpPin::McpPin(int id){
-  if(id>7)id=id-7;
+  port=(byte)6;
+  if(id>7){
+      id=id-7;
+      port=(byte)7;
+  }
+  pin=pow(2,id);
   
 }
 byte McpPin::getPortAddress(){
