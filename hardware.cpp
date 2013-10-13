@@ -206,12 +206,12 @@ display7segment::display7segment(int address){
 }
 
 void display7segment::setValue(double value){
-  int dpPosition=0;
+  McpPin dpPosition=pinAndMcpIO[8];
   //get first digit
   if(value<10){
       //show to 1d.p
       value=value*10;
-      dpPosition=1;
+      dpPosition=pinAndMcpIO[5];
   }
   Wire.beginTransmission(expanderAddress);
   Wire.write(0x12);
