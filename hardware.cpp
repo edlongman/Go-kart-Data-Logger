@@ -213,17 +213,24 @@ void display7segment::setValue(double value){
       value=value*10;
       dpPosition=pinAndMcpIO[5];
   }
+  
+  //get current pin states
   Wire.beginTransmission(expanderAddress);
   Wire.write(0x12);
+  Wire.requestFrom(expanderAddress, 1);
+  byte GpioAByte = Wire.receive();
+  Wire.endTransmission();
+  Wire.beginTransmission(expanderAddress);
+  Wire.write(0x13);
+  Wire.requestFrom(expanderAddress, 1);
+  byte GpioBByte = Wire.receive();
+  Wire.endTransmission();
   int firstVal=(int)value;
-  byte GpioAByte=0x00;
-  byte GpioBByte=0x00;
   for(int i=0;i<size(numbersAndPinSegment1[firstVal]);i++){
       //loop through pins checking whether it's for register A or B and add them to the byte
   }
   //get the second digit and round
   int secondVal=(int)(value-firstVal+0.5);
-  Wire.endTransmission();
   
   
 }
