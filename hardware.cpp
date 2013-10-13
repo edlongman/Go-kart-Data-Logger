@@ -9,6 +9,7 @@
 #include "file.h"
 #include "hardware.h"
 #include <Wire.h>
+#include <math.h>
 
 #define wheelCircumference 1214 //mm
 #define DS1307_I2C_ADDRESS 0x68
@@ -121,6 +122,10 @@ void wheelspeed::logWheelRotation(){
 McpPin::McpPin(byte _port, byte _pin){
     port=_port;
     pin=_pin;
+}
+McpPin::McpPin(int id){
+  if(id>7)id=id-7;
+  
 }
 byte McpPin::getPortAddress(){
     return port;

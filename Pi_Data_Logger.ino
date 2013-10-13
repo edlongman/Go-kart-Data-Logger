@@ -1,5 +1,6 @@
 #include <Wire.h>
 #include <SD.h>
+#include <math.h>
 #include "hardware.h"
 #include "file.h"
 
