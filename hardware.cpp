@@ -118,9 +118,15 @@ void wheelspeed::logWheelRotation(){
     lastReadWheel=micros();
 }
 
-
-class McpPin::getPortAddress(){
-    
+McpPin::McpPin(byte _port, byte _pin){
+    port=_port;
+    pin=_pin;
+}
+byte McpPin::getPortAddress(){
+    return port;
+}
+byte McpPin::getPinAddress(){
+    return pin;
 }
 
 //display map

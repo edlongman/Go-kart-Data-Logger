@@ -67,7 +67,12 @@ private:
 
 class McpPin{
 public:
+    McpPin(byte _port,byte _pin);
     byte getPortAddress();
+    byte getPinAddress();
+private:
+    byte port;
+    byte pin;
 };
 
 //display mapp
