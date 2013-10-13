@@ -168,7 +168,7 @@ display7segment::display7segment(int address){
     };
     int pinAndMcpIO[][2]={
       
-    }
+    };
     
     //setup MCP
     Wire.beginTransmission(expanderAddress);
@@ -193,11 +193,11 @@ void display7segment::setValue(double value){
   Wire.beginTransmission(expanderAddress);
   Wire.write(0x12);
   int firstVal=(int)value;
-  Wire.write(numbersAndByte[firstVal]);
+  Wire.write(numbersAndPinSegment1[firstVal]);
   Wire.write(0x13);
   //get the second digit and round
   int secondVal=(int)(value-firstVal+0.5);
-  Wire.write(numbersAndByte[secondVal]);
+  Wire.write(numbersAndPinSegment2[secondVal]);
   Wire.write(0x12+dpPosition);
   Wire.write(0x00);
   Wire.endTransmission();
