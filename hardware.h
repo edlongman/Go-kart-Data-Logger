@@ -69,6 +69,7 @@ class McpPin{
 public:
     McpPin(byte _port,byte _pin);
     McpPin(int id);
+    McpPin();
     byte getPortAddress();
     byte getPinAddress();
 private:
