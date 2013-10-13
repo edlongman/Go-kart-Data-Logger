@@ -104,8 +104,8 @@ private:
 //  5     6  
 //  *     * 
 //   **7**  *8
-    int numbersAndPinSegment1[10];
-    int numbersAndPinSegment2[10];
+    int numbersAndPinSegment1[][7];
+    int numbersAndPinSegment2[][7];
     McpPin pinAndMcpIO[16];
     McpPin dpPosition;
 };
