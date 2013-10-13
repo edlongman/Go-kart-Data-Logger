@@ -141,11 +141,11 @@ display7segment::display7segment(int address){
     Wire.beginTransmission(expanderAddress);
     Wire.write(0x00);//IODIRA
     Wire.write(0x00);//Set Outputs
-    Wire.endTransmission()
+    Wire.endTransmission();
     Wire.beginTransmission(expanderAddress);
     Wire.write(0x01);//IODIRB
     Wire.write(0x00);//Set Outputs
-    Wire.endTransmission()
+    Wire.endTransmission();
     
 }
 
