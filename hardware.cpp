@@ -218,13 +218,15 @@ void display7segment::setValue(double value){
   Wire.beginTransmission(expanderAddress);
   Wire.write(0x12);
   Wire.requestFrom(expanderAddress, 1);
-  byte GpioAByte = Wire.receive();
+  byte currentGpioAByte = Wire.receive();
   Wire.endTransmission();
   Wire.beginTransmission(expanderAddress);
   Wire.write(0x13);
   Wire.requestFrom(expanderAddress, 1);
-  byte GpioBByte = Wire.receive();
+  byte currentGpioBByte = Wire.receive();
   Wire.endTransmission();
+  byte GpioAChange=0x00;
+  byte GpioBChange=0x00;
   int firstVal=(int)value;
   for(int i=0;i<size(numbersAndPinSegment1[firstVal]);i++){
       //loop through pins checking whether it's for register A or B and add them to the byte
