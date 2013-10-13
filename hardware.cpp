@@ -176,9 +176,22 @@ display7segment::display7segment(int address){
       {5,6,7,8,10,11,12},//8
       {7,8,10,11,12} //9
     };
-    int pinAndMcpIO[][2]={
-      
-    };
+    pinAndMcpIO[1]=McpPin(0);
+    pinAndMcpIO[2]=McpPin(1);
+    pinAndMcpIO[3]=McpPin(2);
+    pinAndMcpIO[4]=McpPin(3);
+    pinAndMcpIO[5]=McpPin(4);
+    pinAndMcpIO[6]=McpPin(5);
+    pinAndMcpIO[7]=McpPin(6);
+    pinAndMcpIO[8]=McpPin(7);
+    pinAndMcpIO[9]=McpPin(13);
+    pinAndMcpIO[10]=McpPin(12);
+    pinAndMcpIO[11]=McpPin(9);
+    pinAndMcpIO[12]=McpPin(10);
+    pinAndMcpIO[15]=McpPin(11);
+    pinAndMcpIO[16]=McpPin(14);
+    pinAndMcpIO[17]=McpPin(15);
+    pinAndMcpIO[18]=McpPin(16);
     
     //setup MCP
     Wire.beginTransmission(expanderAddress);

@@ -105,6 +105,7 @@ private:
 //   **7**  *8
     int numbersAndPinSegment1[10];
     int numbersAndPinSegment2[10];
+    McpPin pinAndMcpIO[16];
     static const int dpPlace=8;
 };
 #endif /* defined(__RPi__sensor__) */
