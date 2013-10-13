@@ -119,8 +119,11 @@ void wheelspeed::logWheelRotation(){
 }
 
 
+class McpPin::getPortAddress(){
+    
+}
 
-//display mapp
+//display map
 //   **16**      **11**
 //  *      *    *      *
 // 18      15  12      10
@@ -139,7 +142,7 @@ display7segment::display7segment(int address){
       {1,2,15,16,17},//2
       {2,3,15,16,17},//3
       {3,15,17,18},//4
-      {2,3,16,17,18},//5
+      {2,3,16,17,18},//5              
       {1,2,3,15,16,17},//6
       {3,15,16},//7
       {1,2,3,15,16,17,18},//8
@@ -157,6 +160,9 @@ display7segment::display7segment(int address){
       {5,6,7,8,10,11,12},//8
       {7,8,10,11,12} //9
     };
+    int pinAndMcpIO[][2]={
+      
+    }
     
     //setup MCP
     Wire.beginTransmission(expanderAddress);

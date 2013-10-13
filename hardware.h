@@ -64,6 +64,12 @@ private:
     long lastButOneReadWheel;
     long totalWheelRotations;
 };
+
+class McpPin{
+public:
+    byte getPortAddress();
+};
+
 //display mapp
 //   **16**      **11**
 //  *      *    *      *
