@@ -250,6 +250,7 @@ void display7segment::setValue(double value){
           GpioBChange|=(0x00<<iterationPin.getPinAddress());
       }
   }
-  
+  GpioAChange^=currentGpioAByte;
+  GpioBChange^=currentGpioBByte;
   
 }
