@@ -216,6 +216,11 @@ void display7segment::setValue(double value){
   Wire.beginTransmission(expanderAddress);
   Wire.write(0x12);
   int firstVal=(int)value;
+  byte GpioAByte=0x00;
+  byte GpioBByte=0x00;
+  for(int i=0;i<size(numbersAndPinSegment1[firstVal]);i++){
+      //loop through pins checking whether it's for register A or B and add them to the byte
+  }
   //get the second digit and round
   int secondVal=(int)(value-firstVal+0.5);
   Wire.endTransmission();
