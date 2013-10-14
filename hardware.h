@@ -53,6 +53,14 @@ public:
     virtual bool actual(double *value);
 };
 
+class irTemperature : public sensor {
+public:
+    sensorPins sensorType: lightPin;
+    light(double startTime);
+    //IN LUX (LUMSNS/sqrFT)
+    virtual bool actual(double *value);
+};
+
 class wheelspeed : public sensor {
 public:
     sensorPins sensorType: wheelspeedPin;
