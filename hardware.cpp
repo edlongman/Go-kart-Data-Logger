@@ -106,6 +106,14 @@ bool irTemperature::actual(double *value){
     Wire.write(0x07);
     Wire.endTransmission(false);//keep alive to do byte read
     
+    //recieve that temperature
+    Wire.requestFrom(0x00,2);
+    lowData = Wire.read();
+    highData = Wire.read();
+    
+    //do the maths
+    double kelvin = 0x00;
+    kelvin = (double)(((highData & 0x007F)<<8)+lowData);
 }
 
 wheelspeed::wheelspeed(double startTime):sensor("wheelspeed",wheelspeedPin){
