@@ -99,16 +99,13 @@ irTemperature::irTemperature(double startTime):sensor("light",lightPin){
     timeNow=startTime;
 }
 bool irTemperature::actual(double *value){
-    double voltage;
-    bool success=rawRead(&voltage);
-    if(!(voltage==0.0)){
-        //sensor resitsance it 10000ohms when at 0LUX
-        double resistance=1000.0*(3.3-voltage)/voltage;
-        *value=100/resistance;
-        return true;
-    }else{
-        return false;
-    }
+    byte highData = 0x00;
+    byte lowData = 0x00;
+    
+    Wire.beginTransmission(0x00);
+    Wire.write(0x07);
+    Wire.endTransmission(false);//keep alive to do byte read
+    
 }
 
 wheelspeed::wheelspeed(double startTime):sensor("wheelspeed",wheelspeedPin){
