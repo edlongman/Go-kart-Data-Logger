@@ -232,10 +232,10 @@ void display7segment::setValue(double value){
       McpPin iterationPin=pinAndMcpIO[numbersAndPinSegment1[firstVal][i]];
       //loop through pins checking whether it's for register A or B and add them to the byte
       if(iterationPin.getPortAddress()==0x12){
-          GpioAChange|=(0x00<<iterationPin.getPinAddress());
+          GpioAChange|=(0x01<<iterationPin.getPinAddress());
       }
       else{
-          GpioBChange|=(0x00<<iterationPin.getPinAddress());
+          GpioBChange|=(0x01<<iterationPin.getPinAddress());
       }
   }
   //get the second digit and round
@@ -244,10 +244,10 @@ void display7segment::setValue(double value){
       McpPin iterationPin=pinAndMcpIO[numbersAndPinSegment2[firstVal][i]];
       //loop through pins checking whether it's for register A or B and add them to the byte
       if(iterationPin.getPortAddress()==0x12){
-          GpioAChange|=(0x00<<iterationPin.getPinAddress());
+          GpioAChange|=(0x01<<iterationPin.getPinAddress());
       }
       else{
-          GpioBChange|=(0x00<<iterationPin.getPinAddress());
+          GpioBChange|=(0x01<<iterationPin.getPinAddress());
       }
   }
   GpioAChange^=currentGpioAByte;
