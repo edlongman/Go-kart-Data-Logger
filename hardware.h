@@ -56,7 +56,7 @@ public:
 class irTemperature : public sensor {
 public:
     sensorPins sensorType: lightPin;
-    light(double startTime);
+    irTemperature(double startTime);
     //IN LUX (LUMSNS/sqrFT)
     virtual bool actual(double *value);
 };
