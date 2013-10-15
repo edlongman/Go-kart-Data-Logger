@@ -126,6 +126,9 @@ wheelspeed::wheelspeed(double startTime):sensor("wheelspeed",wheelspeedPin){
     lastReadWheel=micros();
 }
 bool wheelspeed::actual(double *value){
+    *value=totalWheelRotations*wheelCircumference
+}
+bool wheelspeed::actualSpeed(double *value){
     long timeGap=lastReadWheel-lastButOneReadWheel;
     if(timeGap<2000000){
       //try and calculate speed
@@ -156,6 +159,7 @@ McpPin::McpPin(int id){
   pin=pow(2,id);
   
 }
+McpPin::McpPin(){}
 byte McpPin::getPortAddress(){
     return port;
 }

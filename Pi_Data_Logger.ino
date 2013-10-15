@@ -18,6 +18,7 @@ temperature temp1(0);
 light light1(0);
 irTemperature irTemp1(0);
 wheelspeed speed1(0);
+display7segment speedDisplay(0x00);
 unsigned long currTime;
 void setup(){
     //start clock
@@ -34,6 +35,7 @@ void loop(){
     bool IrTempResult=irTemp1.log(currTime,&currIrTemp);
     double currSpeed;
     bool speedResult=irTemp1.log(currTime,&currSpeed);
+    speedDisplay.setValue(currSpeed);
 }
 void logWheelInterrupt(){
     speed1.logWheelRotation();
