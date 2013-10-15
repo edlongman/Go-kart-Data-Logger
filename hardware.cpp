@@ -126,7 +126,8 @@ wheelspeed::wheelspeed(double startTime):sensor("wheelspeed",wheelspeedPin){
     lastReadWheel=micros();
 }
 bool wheelspeed::actual(double *value){
-    *value=totalWheelRotations*wheelCircumference
+    *value=totalWheelRotations*wheelCircumference;
+    return true;
 }
 bool wheelspeed::actualSpeed(double *value){
     long timeGap=lastReadWheel-lastButOneReadWheel;

@@ -67,6 +67,7 @@ public:
     wheelspeed(double startTime);
     virtual bool actual(double *value);
     void logWheelRotation();
+    bool actualSpeed(double *value);
 private:
     long lastReadWheel;
     long lastButOneReadWheel;
