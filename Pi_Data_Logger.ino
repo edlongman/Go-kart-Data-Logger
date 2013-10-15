@@ -19,6 +19,7 @@ light light1(0);
 irTemperature irTemp1(0);
 wheelspeed speed1(0);
 display7segment speedDisplay(0x00);
+long lastLogTime=millis();
 unsigned long currTime;
 void setup(){
     //start clock
@@ -27,15 +28,22 @@ void setup(){
     attachInterrupt(0,logWheelInterrupt,RISING);
 }
 void loop(){
+    while(lastLogTime<millis()-500){//if last log was >half a second ago, log
+        //otherwise only update speed
+        double currSpeed;
+        bool speedResult=speed1.actualSpeed(&currSpeed);
+        speedDisplay.setValue(currSpeed);
+    }
     double currTemp;
     bool tempResult=temp1.log(currTime,&currTemp);
     double currLight;
     bool lightResult=light1.log(currTime,&currLight);
     double currIrTemp;
     bool IrTempResult=irTemp1.log(currTime,&currIrTemp);
-    double currSpeed;
-    bool speedResult=irTemp1.log(currTime,&currSpeed);
-    speedDisplay.setValue(currSpeed);
+    double currDist;
+    bool speedResult=speed1.log(currTime,&currDist);
+    speedDisplay.setValue(currDist);
+    lastLogTime=millis();
 }
 void logWheelInterrupt(){
     speed1.logWheelRotation();
