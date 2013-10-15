@@ -16,6 +16,7 @@
 
 temperature temp1(0);
 light light1(0);
+irTemperature irTemp1(0);
 wheelspeed speed1(0);
 unsigned long currTime;
 void setup(){
@@ -29,6 +30,10 @@ void loop(){
     bool tempResult=temp1.log(currTime,&currTemp);
     double currLight;
     bool lightResult=light1.log(currTime,&currLight);
+    double currIrTemp;
+    bool IrTempResult=irTemp1.log(currTime,&currIrTemp);
+    double currSpeed;
+    bool speedResult=irTemp1.log(currTime,&currSpeed);
 }
 void logWheelInterrupt(){
     speed1.logWheelRotation();

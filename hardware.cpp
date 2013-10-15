@@ -113,7 +113,8 @@ bool irTemperature::actual(double *value){
     
     //do the maths
     double kelvin = 0x00;
-    kelvin = (double)(((highData & 0x007F)<<8)+lowData);
+    kelvin = (double)(((highData & 0x007F)<<8)+lowData)*0.02-0.01;
+    return kelvin-273.15;
 }
 
 wheelspeed::wheelspeed(double startTime):sensor("wheelspeed",wheelspeedPin){
