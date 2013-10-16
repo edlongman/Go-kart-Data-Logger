@@ -21,19 +21,24 @@ wheelspeed speed1(0);
 display7segment speedDisplay(0x00);
 long lastLogTime=millis();
 unsigned long currTime;
+unsigned long numberOfLogs;
 void setup(){
     //start clock
     unsigned long currTime=micros();
     SD.begin(10);
     attachInterrupt(0,logWheelInterrupt,RISING);
+    numberOfLogs=0;
 }
 void loop(){
-    while(lastLogTime<millis()-500){//if last log was >half a second ago, log
+    while(numberOfLogs*500<millis()){//if last log was >half a second ago, log
         //otherwise only update speed
         double currSpeed;
         bool speedResult=speed1.actualSpeed(&currSpeed);
         speedDisplay.setValue(currSpeed);
     }
+    
+    currTime=millis();
+    
     double currTemp;
     bool tempResult=temp1.log(currTime,&currTemp);
     double currLight;
@@ -43,7 +48,7 @@ void loop(){
     double currDist;
     bool speedResult=speed1.log(currTime,&currDist);
     speedDisplay.setValue(currDist);
-    lastLogTime=millis();
+    lastLogTime=currTime;
 }
 void logWheelInterrupt(){
     speed1.logWheelRotation();
