@@ -24,7 +24,7 @@ long lastLogTime=millis();
 unsigned long currTime;
 unsigned long numberOfLogs;
 void setup(){
-    setupTest();
+    setupTests();
     //start clock
     unsigned long currTime=micros();
     SD.begin(10);
