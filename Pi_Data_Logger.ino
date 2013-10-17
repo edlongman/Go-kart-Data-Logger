@@ -23,6 +23,7 @@ long lastLogTime=millis();
 unsigned long currTime;
 unsigned long numberOfLogs;
 void setup(){
+    setupSerial();
     //start clock
     unsigned long currTime=micros();
     SD.begin(10);
