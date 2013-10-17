@@ -8,10 +8,14 @@
 #include <math.h>
 #include "sensor_test.h"
 
-void setupTests(){
+void setupTests(sensor sensors[]){
     if(!setupSerial()){
         //serial not connected so not for debug
         return;
+    }
+    
+    for(int i=0;i<sizeof(sensors)/sizeof(sensor);i++){
+        Serial.println(((string) i)+". "+sensors[i].name());
     }
 }
 

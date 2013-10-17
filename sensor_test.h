@@ -10,7 +10,7 @@
 #include <Wire.h>
 #include <math.h>
 
-void setupTests();
+void setupTests(sensor[]);
 bool setupSerial();
 
 #endif //sensor_test_h

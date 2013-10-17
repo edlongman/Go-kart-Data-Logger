@@ -24,7 +24,13 @@ long lastLogTime=millis();
 unsigned long currTime;
 unsigned long numberOfLogs;
 void setup(){
-    setupTests();
+    sensor connectedSensors[]={
+        temp1,
+        light1,
+        irTemp1,
+        speed1
+    };
+    setupTests(connectedSensors);
     //start clock
     unsigned long currTime=micros();
     SD.begin(10);
