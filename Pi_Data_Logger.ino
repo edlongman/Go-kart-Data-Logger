@@ -3,6 +3,7 @@
 #include <math.h>
 #include "hardware.h"
 #include "file.h"
+#include "sensor_test.h"
 
 //
 //  main.cpp
