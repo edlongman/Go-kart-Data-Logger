@@ -11,6 +11,6 @@
 #include <math.h>
 
 void setupTests();
-void setupSerial();
+bool setupSerial();
 
 #endif //sensor_test_h

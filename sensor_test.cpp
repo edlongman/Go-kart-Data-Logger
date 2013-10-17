@@ -6,12 +6,16 @@
 #include "hardware.h"
 #include <Wire.h>
 #include <math.h>
+#include "sensor_test.h"
 
 void setupTests(){
-    setupSerial();
+    if(!setupSerial()){
+        //serial not connected so not for debug
+        return;
+    }
 }
 
-void setupSerial(){
+bool setupSerial(){
     Serial.begin(9600);
     while(!Serial){}
     Serial.print("Connecting..");
@@ -20,5 +24,8 @@ void setupSerial(){
     }
     if(Serial.available()>0){
         Serial.print("Connected");
+        return true;
     }
+    return false;
+    
 }
