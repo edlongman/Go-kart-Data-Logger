@@ -15,7 +15,7 @@ void setupTests(sensor sensors[]){
     }
     
     for(int i=0;i<sizeof(sensors)/sizeof(sensor);i++){
-        Serial.println(((string) i)+". "+sensors[i].name());
+        Serial.println(((String) i)+". "+sensors[i].name());
     }
 }
 
