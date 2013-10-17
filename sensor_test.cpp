@@ -7,11 +7,11 @@
 #include <Wire.h>
 #include <math.h>
 
-void setupSerial(){
+void setupTests(){
     Serial.begin(9600);
     while(!Serial){}
     Serial.print("Connecting..");
-    while(Serial.available()<=0&millis()>3000){
+    while(Serial.available()<=0&millis()>3000){//only for the first 3 seconds
         Serial.print(".");
     }
     if(Serial.available()>0){
