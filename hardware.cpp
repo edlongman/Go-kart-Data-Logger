@@ -93,7 +93,7 @@ bool light::actual(double *value){
     }
 }
 
-irTemperature::irTemperature(double startTime):sensor("light",lightPin){
+irTemperature::irTemperature(double startTime):sensor("irTemp",lightPin){
     sensorType=lightPin;
     sensorName="light";
     timeNow=startTime;
