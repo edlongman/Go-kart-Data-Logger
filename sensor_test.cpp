@@ -13,6 +13,7 @@ void setupTests(sensor sensors[]){
         //serial not connected so not for debug
         return;
     }
+    testSensor(sensors[]);
     
 }
 
@@ -32,9 +33,14 @@ bool setupSerial(){
 }
 
 bool testSensor(sensor sensors[]){
+    Serial.println("Press a key to read that sensor:");
     for(int i=0;i<sizeof(sensors)/sizeof(sensor);i++){
-        Serial.println(((String) i)+". "+sensors[i].name());
+        Serial.println(((String) i+1)+". "+sensors[i].name());
     }
+    int option=(int)Serial.read();
+    int value;
+    sensors[option].actual(&value);
+    Serial.println("Value:"+(String value))
 }
 
 
