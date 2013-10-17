@@ -24,6 +24,7 @@ public:
     //the function writes the reading into the *value
     bool log(double timeNow,double *value);
     virtual bool actual(double *value);
+    String name();
 protected:
     sensorPins sensorType;
     String sensorName;

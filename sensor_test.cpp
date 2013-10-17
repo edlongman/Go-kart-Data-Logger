@@ -40,8 +40,8 @@ bool testSensor(sensor sensors[]){
     int option=(int)Serial.read();
     double value;
     sensors[option].actual(&value);
-    Serial.print("Value:")
-    Serial.println(value));
+    Serial.print("Value:");
+    Serial.println(value);
     return true;
 }
 

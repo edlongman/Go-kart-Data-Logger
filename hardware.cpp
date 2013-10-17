@@ -29,6 +29,9 @@ sensor::sensor(String sensorName, sensorPins sensorType):logFile(sensorName){
 bool sensor::actual(double *value){
     return false;
 }
+String sensor::name(){
+    return sensorName;
+}
 
 bool sensor::log(double timeNow, double *value){
     //read the value from the sensor with a time.
