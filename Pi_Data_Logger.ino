@@ -4,6 +4,7 @@
 #include "hardware.h"
 #include "file.h"
 #include "sensor_test.h"
+#include <LiquidCrystal_I2C_ST7032i.h>
 
 //
 //  main.cpp

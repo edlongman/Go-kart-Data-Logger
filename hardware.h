@@ -1,3 +1,5 @@
+#include <LiquidCrystal_I2C_ST7032i.h>
+
 //
 //  sensor.h
 //  RPi
@@ -119,4 +121,5 @@ private:
     McpPin pinAndMcpIO[16];
     McpPin dpPosition;
 };
+
 #endif /* defined(__RPi__sensor__) */

@@ -10,6 +10,7 @@
 #include "hardware.h"
 #include <Wire.h>
 #include <math.h>
+#include <LiquidCrystal_I2C_ST7032i.h>
 
 #define wheelCircumference 1214 //mm
 #define DS1307_I2C_ADDRESS 0x68
