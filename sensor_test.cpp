@@ -8,6 +8,10 @@
 #include <math.h>
 
 void setupTests(){
+    setupSerial();
+}
+
+void setupSerial(){
     Serial.begin(9600);
     while(!Serial){}
     Serial.print("Connecting..");
