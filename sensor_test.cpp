@@ -8,5 +8,13 @@
 #include <math.h>
 
 void setupSerial(){
-
+    Serial.begin(9600);
+    while(!Serial){}
+    Serial.print("Connecting..");
+    while(Serial.available()<=0&millis()>3000){
+        Serial.print(".");
+    }
+    if(Serial.available()>0){
+        Serial.print("Connected");
+    }
 }
