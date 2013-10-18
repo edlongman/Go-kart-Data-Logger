@@ -24,6 +24,8 @@ display7segment speedDisplay(0x00);
 long lastLogTime=millis();
 unsigned long currTime;
 unsigned long numberOfLogs;
+LiquidCrystal_I2C_ST7032i lcd(0x3E,16,2,12);
+
 void setup(){
     sensor connectedSensors[]={
         temp1,
