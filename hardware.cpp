@@ -295,3 +295,4 @@ void display7segment::setValue(double value){
   Wire.endTransmission();
   
 }
+

@@ -21,14 +21,13 @@ bool setupSerial(){
     Serial.begin(9600);
     while(!Serial){}
     Serial.print("Connecting..");
-    while(Serial.available()<=0&millis()>3000){//only for the first 3 seconds
+    while(Serial.available()<=0){
+        if(millis()>10000){return false;}//only for the first 3 seconds
         Serial.print(".");
+        delay(300);
     }
-    if(Serial.available()>0){
-        Serial.print("Connected");
-        return true;
-    }
-    return false;
+    Serial.print("Connected");
+    return true;
     
 }
 

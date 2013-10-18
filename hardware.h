@@ -122,4 +122,5 @@ private:
     McpPin dpPosition;
 };
 
+
 #endif /* defined(__RPi__sensor__) */
