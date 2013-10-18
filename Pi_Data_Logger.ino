@@ -20,7 +20,7 @@ temperature temp1(0);
 light light1(0);
 irTemperature irTemp1(0);
 wheelspeed speed1(0);
-display7segment speedDisplay(0x00);
+//display7segment speedDisplay(0x00);
 long lastLogTime=millis();
 unsigned long currTime;
 unsigned long numberOfLogs;
@@ -39,13 +39,15 @@ void setup(){
     SD.begin(10);
     attachInterrupt(0,logWheelInterrupt,RISING);
     numberOfLogs=0;
+    lcd.init();
+    
 }
 void loop(){
     while(numberOfLogs*500<millis()){//if last log was >half a second ago, log
         //otherwise only update speed
         double currSpeed;
         bool speedResult=speed1.actualSpeed(&currSpeed);
-        speedDisplay.setValue(currSpeed);
+        //speedDisplay.setValue(currSpeed);
     }
     
     currTime=millis();
@@ -58,9 +60,9 @@ void loop(){
     bool IrTempResult=irTemp1.log(currTime,&currIrTemp);
     double currDist;
     bool speedResult=speed1.log(currTime,&currDist);
-    speedDisplay.setValue(currDist);
+    //speedDisplay.setValue(currDist);
     lastLogTime=currTime;
 }
 void logWheelInterrupt(){
-    speed1.logWheelRotation();
+    /*speed1.logWheelRotation();*/
 }
