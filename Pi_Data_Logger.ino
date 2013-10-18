@@ -27,6 +27,8 @@ unsigned long numberOfLogs;
 LiquidCrystal_I2C_ST7032i lcd(0x3E,16,2,12);
 
 void setup(){
+    pinMode(13, OUTPUT);
+    digitalWrite(13, HIGH);
     sensor connectedSensors[]={
         temp1,
         light1,
