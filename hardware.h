@@ -79,14 +79,14 @@ private:
 
 class McpPin{
 public:
-    McpPin(byte _port,byte _pin);
+    McpPin(int _port,int _pin);
     McpPin(int id);
     McpPin();
-    byte getPortAddress();
-    byte getPinAddress();
+    int getPortAddress();
+    int getPinAddress();
 private:
-    byte port;
-    byte pin;
+    int port;
+    int pin;
 };
 
 //display mapp
@@ -101,6 +101,7 @@ private:
 //   **2***  *4  **6***  *9
 class display7segment{
 public:
+    display7segment();
     display7segment(int expanderAddress);
     void setValue(double value);
 private:
@@ -116,11 +117,12 @@ private:
 //  5     6  
 //  *     * 
 //   **7**  *8
-    int numbersAndPinSegment1[][7];
-    int numbersAndPinSegment2[][7];
-    McpPin pinAndMcpIO[16];
+    int numbersAndPinSegment1[10][7];
+    int numbersAndPinSegment2[10][7];
+    McpPin pinAndMcpIO[18];
     McpPin dpPosition;
 };
+
 
 
 #endif /* defined(__RPi__sensor__) */

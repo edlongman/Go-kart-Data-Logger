@@ -151,24 +151,26 @@ void wheelspeed::logWheelRotation(){
     lastReadWheel=micros();
 }
 
-McpPin::McpPin(byte _port, byte _pin){
+McpPin::McpPin(int _port, int _pin){
     port=_port;
     pin=_pin;
 }
 McpPin::McpPin(int id){
-  port=0x13;
+  port=0x12;
   if(id>7){
       id=id-7;
       port=0x13;
   }
-  pin=pow(2,id);
+  pin=0x01<<id;
   
 }
-McpPin::McpPin(){}
-byte McpPin::getPortAddress(){
+McpPin::McpPin(){
+    pin=0x00;
+}
+int McpPin::getPortAddress(){
     return port;
 }
-byte McpPin::getPinAddress(){
+int McpPin::getPinAddress(){
     return pin;
 }
 
@@ -182,117 +184,110 @@ byte McpPin::getPinAddress(){
 //  1      3    5      8
 //  *      *    *      *
 //   **2***  *4  **6***  *9
-
+display7segment::display7segment(){}
 display7segment::display7segment(int address){
     expanderAddress=address;
-    int numbersAndPinSegment1[][7]={
-      {1,2,3,15,16,18},//0
-      {3,15},//1
-      {1,2,15,16,17},//2
-      {2,3,15,16,17},//3
-      {3,15,17,18},//4
-      {2,3,16,17,18},//5              
-      {1,2,3,15,16,17},//6
-      {3,15,16},//7
-      {1,2,3,15,16,17,18},//8
-      {3,15,16,17,18} //9
-    };
-    int numbersAndPinSegment2[][7]={
-      {5,6,8,10,11,12},//0
-      {8,10},//1
-      {5,6,7,10,11},//2
-      {6,7,8,10,11},//3
-      {7,8,10,12},//4
-      {6,7,8,11,12},//5
-      {5,6,7,8,10,11},//6
-      {8,10,11},//7
-      {5,6,7,8,10,11,12},//8
-      {7,8,10,11,12} //9
-    };
-    pinAndMcpIO[1]=McpPin(0);
-    pinAndMcpIO[2]=McpPin(1);
-    pinAndMcpIO[3]=McpPin(2);
-    pinAndMcpIO[4]=McpPin(3);
-    pinAndMcpIO[5]=McpPin(4);
-    pinAndMcpIO[6]=McpPin(5);
-    pinAndMcpIO[7]=McpPin(6);
-    pinAndMcpIO[8]=McpPin(7);
-    pinAndMcpIO[9]=McpPin(13);
-    pinAndMcpIO[10]=McpPin(12);
-    pinAndMcpIO[11]=McpPin(9);
-    pinAndMcpIO[12]=McpPin(10);
-    pinAndMcpIO[15]=McpPin(11);
-    pinAndMcpIO[16]=McpPin(14);
-    pinAndMcpIO[17]=McpPin(15);
-    pinAndMcpIO[18]=McpPin(16);
+    pinAndMcpIO[1]=McpPin(0x12,0x40);
+    pinAndMcpIO[2]=McpPin(0x12,0x80);
+    pinAndMcpIO[3]=McpPin(0x13,0x01);
+    pinAndMcpIO[4]=McpPin(0x13,0x02);
+    pinAndMcpIO[5]=McpPin(0x13,0x04);
+    pinAndMcpIO[6]=McpPin(0x13,0x08);
+    pinAndMcpIO[7]=McpPin(0x13,0x10);
+    pinAndMcpIO[8]=McpPin(0x13,0x20);
+    pinAndMcpIO[9]=McpPin(0x13,0x40);
+    pinAndMcpIO[10]=McpPin(0x12,0x02);
+    pinAndMcpIO[11]=McpPin(0x12,0x04);
+    pinAndMcpIO[12]=McpPin(0x12,0x08);
+    pinAndMcpIO[15]=McpPin(0x12,0x01);
+    pinAndMcpIO[16]=McpPin(0x13,0x80);
+    pinAndMcpIO[17]=McpPin(0x12,0x10);
+    pinAndMcpIO[18]=McpPin(0x12,0x20);
     
     //setup MCP
-    Wire.beginTransmission(expanderAddress);
+    //Wire.begin();
+    /*Wire.beginTransmission(0x20);
     Wire.write(0x00);//IODIRA
     Wire.write(0x00);//Set Outputs
-    Wire.endTransmission();
+    Wire.endTransmission();/*
     Wire.beginTransmission(expanderAddress);
     Wire.write(0x01);//IODIRB
     Wire.write(0x00);//Set Outputs
-    Wire.endTransmission();
+    Wire.endTransmission();*/
     
 }
 
 void display7segment::setValue(double value){
-  McpPin dpPosition=pinAndMcpIO[8];
-  //get first digit
-  if(value<10){
-      //show to 1d.p
-      value=value*10;
-      dpPosition=pinAndMcpIO[5];
-  }
-  
-  //get current pin states
-  Wire.beginTransmission(expanderAddress);
-  Wire.write(0x12);
-  Wire.requestFrom(expanderAddress, 1);
-  byte currentGpioAByte = Wire.read();
-  Wire.endTransmission();
-  Wire.beginTransmission(expanderAddress);
-  Wire.write(0x13);
-  Wire.requestFrom(expanderAddress, 1);
-  byte currentGpioBByte = Wire.read();
-  Wire.endTransmission();
-  byte GpioAChange=0x00;
-  byte GpioBChange=0x00;
-  int firstVal=(int)value;
-  for(int i=0;i<sizeof(numbersAndPinSegment1[firstVal])/sizeof(int);i++){
-      McpPin iterationPin=pinAndMcpIO[numbersAndPinSegment1[firstVal][i]];
-      //loop through pins checking whether it's for register A or B and add them to the byte
-      if(iterationPin.getPortAddress()==0x12){
-          GpioAChange|=(0x01<<iterationPin.getPinAddress());
-      }
-      else{
-          GpioBChange|=(0x01<<iterationPin.getPinAddress());
-      }
-  }
-  //get the second digit and round
-  int secondVal=(int)(value-firstVal+0.5);
-  for(int i=0;i<sizeof(numbersAndPinSegment2[secondVal])/sizeof(int);i++){
-      McpPin iterationPin=pinAndMcpIO[numbersAndPinSegment2[firstVal][i]];
-      //loop through pins checking whether it's for register A or B and add them to the byte
-      if(iterationPin.getPortAddress()==0x12){
-          GpioAChange|=(0x01<<iterationPin.getPinAddress());
-      }
-      else{
-          GpioBChange|=(0x01<<iterationPin.getPinAddress());
-      }
-  }
-  GpioAChange^=currentGpioAByte;
-  GpioBChange^=currentGpioBByte;
-  Wire.beginTransmission(expanderAddress);
-  Wire.write(0x12);
-  Wire.write(currentGpioAByte);
-  Wire.endTransmission();
-  Wire.beginTransmission(expanderAddress);
-  Wire.write(0x13);
-  Wire.write(currentGpioBByte);
-  Wire.endTransmission();
-  
+        int numbersAndPinSegment1[][7]={
+          {1,2,3,15,16,18},//0
+          {3,15},//1
+          {1,2,15,16,17},//2
+          {2,3,15,16,17},//3
+          {3,15,17,18},//4
+          {2,3,16,17,18},//5              
+          {1,2,3,16,17,18},//6
+          {3,15,16},//7
+          {1,2,3,15,16,17,18},//8
+          {3,15,16,17,18} //9
+        };
+        int numbersAndPinSegment2[][7]={
+          {5,6,8,10,11,12},//0
+          {8,10},//1
+          {5,6,7,10,11},//2
+          {6,7,8,10,11},//3
+          {7,8,10,12},//4
+          {6,7,8,11,12},//5
+          {5,6,7,8,11,12},//6
+          {8,10,11},//7
+          {5,6,7,8,10,11,12},//8
+          {7,8,10,11,12} //9
+        };
+        McpPin dpPosition=pinAndMcpIO[9];
+        //get first digit
+        if(value<10){
+            //show to 1d.p
+            value=value*10;
+            dpPosition=pinAndMcpIO[4];
+        }
+        
+        int GpioAChange=0x00;
+        int GpioBChange=0x00;
+        int firstVal=(int)(value/10);
+        for(int i=0;i<sizeof(numbersAndPinSegment1[firstVal])/sizeof(int);i++){
+            McpPin iterationPin=pinAndMcpIO[numbersAndPinSegment1[firstVal][i]];
+            //loop through pins checking whether it's for register A or B and add them to the int
+            if(iterationPin.getPortAddress()==0x12){
+                GpioAChange|=iterationPin.getPinAddress();
+            }
+            else{
+                GpioBChange|=iterationPin.getPinAddress();
+            }
+        }
+        //get the second digit and round
+        int secondVal=(int)(value-firstVal*10+0.5);
+        for(int i=0;i<sizeof(numbersAndPinSegment2[secondVal])/sizeof(int);i++){
+            McpPin iterationPin=pinAndMcpIO[numbersAndPinSegment2[secondVal][i]];
+            //loop through pins checking whether it's for register A or B and add them to the int
+            if(iterationPin.getPortAddress()==0x12){
+                GpioAChange|=iterationPin.getPinAddress();
+            }
+            else{
+                GpioBChange|=iterationPin.getPinAddress();
+            }
+        }
+        //loop through pins checking whether it's for register A or B and add them to the int
+        if(dpPosition.getPortAddress()==0x12){
+            GpioAChange|=dpPosition.getPinAddress();
+        }
+        else{
+            GpioBChange|=dpPosition.getPinAddress();
+        }
+        Wire.beginTransmission(0x20);
+        Wire.write(0x12);
+        Wire.write(~GpioAChange);
+        Wire.endTransmission();
+        Wire.beginTransmission(0x20);
+        Wire.write(0x13);
+        Wire.write(~GpioBChange);
+        Wire.endTransmission();
 }
-
